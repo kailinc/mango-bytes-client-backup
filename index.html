@@ -50,7 +50,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><button type="button" class="btn btn-default">Sign Up</button></li>
+                    <li><button id="signUpBtn" type="button" class="btn btn-default" data-toggle="modal" data-target="#signUpModal">Sign Up</button></li>
                     <li><button type="button" class="btn btn-default">Sign In</button></li>
                     <li><button type="button" class="btn btn-default">Update Password</button></li>
                     <li><button type="button" class="btn btn-default">Log Out</button></li>
@@ -89,6 +89,27 @@
           </div>
               <!-- for user active, dynamic cart -->
           <div id="userProf"class="col-sm-4">
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
           </div>
         </div>
       </div>
