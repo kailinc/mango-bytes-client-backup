@@ -3,6 +3,10 @@
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 
+const user = require('./user/events.js')
+const shoe = require('./shoe/events.js')
+const collection = require('./collection/events.js')
+
 $(() => {
   setAPIOrigin(location, config)
 })
@@ -11,4 +15,10 @@ $(() => {
 // const example = require('./example')
 
 // use require without a reference to ensure a file is bundled
-// require('./example')
+require('./example')
+
+$(() => {
+  user.addHandlers()
+  shoe.addHandlers()
+  collection.addHandlers()
+})
