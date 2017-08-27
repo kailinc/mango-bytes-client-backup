@@ -7,10 +7,15 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   width: 100%;
 }
 
+#topNav2 {
+  margin-top: 0;
+}
+
 #header {
   box-sizing: border-box;
   background-color: black;
   color: white;
+  margin-bottom: 0;
 }
 
 
@@ -22,4 +27,8 @@ footer {
   color: white;
   width: 100%;
   text-align: center;
+}
+
+#firstJumbo {
+  margin-top: 100px;
 }
