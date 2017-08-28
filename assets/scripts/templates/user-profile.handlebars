@@ -28,146 +28,20 @@
   <div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-4">
-          <h3>Bug Slayer: </h3> <p>{{user.bugSlayer}}</p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Bug Slayer: </h3> <p>{{user.bugSlayer}}</p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Bug Slayer: </h3> <p>{{user.bugSlayer}}</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <h3>Bug Slayer: </h3> <p>{{user.bugSlayer}}</p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Bug Slayer: </h3> <p>{{user.bugSlayer}}</p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Bug Slayer: </h3> <p>{{user.bugSlayer}}</p>
-        </div>
+        {{#each user.powers as |power|}}
+          <div class="col-sm-4">
+            <img src="{{power.img}}" style="width: 100px;">
+            <h3>{{power.name}}</h3>
+          </div>
+        {{/each}}
       </div>
     </div>
   </div>
+
+
 
   <!-- PLACE FOR SHOWING A USER'S SKILLS -->
   <div>
   </div>
 
 </div>
-
-
-
-
-
-
-<!-- angular
-:
-99
-bootStrap
-:
-99
-bugSlayer
-:
-true
-c
-:
-99
-cPlusPlus
-:
-99
-cSharp
-:
-99
-coderName
-:
-"dam"
-coffeeATM
-:
-true
-createdAt
-:
-"2017-08-25T17:45:38.922Z"
-css
-:
-99
-devCred
-:
-99
-django
-:
-99
-docMaster
-:
-true
-email
-:
-"12@12"
-ember
-:
-99
-fireFingers
-:
-true
-firstName
-:
-"happy"
-fourScreens
-:
-true
-go
-:
-99
-html
-:
-99
-id
-:
-"59a062420a980b1b7cd0b45a"
-java
-:
-99
-javaScript
-:
-99
-lastName
-:
-"wow"
-mongoDB
-:
-99
-mySQL
-:
-99
-node
-:
-99
-password
-:
-null
-python
-:
-99
-rails
-:
-99
-react
-:
-99
-ruby
-:
-99
-sass
-:
-99
-steadyHands
-:
-true
-updatedAt
-:
-"2017-08-28T14:01:16.883Z"
-walkingGoogle
-:
-true -->
