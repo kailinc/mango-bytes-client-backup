@@ -56,6 +56,8 @@ const onLogOutError = function (error) {
 }
 
 const onViewProfileSuccess = function (data) {
+  $('#main').css('display', 'none')
+  $('#userProfile').css('display', 'block')
   $('#userInfo').empty()
   const showUserProfileHTML = showUserProfileTemplate({ user: data.user })
   $('#userInfo').append(showUserProfileHTML)
