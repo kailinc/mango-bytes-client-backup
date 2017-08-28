@@ -55,6 +55,14 @@ const onLogOutError = function (error) {
   console.log(error)
 }
 
+const onViewProfileSuccess = function (data) {
+  console.log(data)
+}
+
+const onViewProfileError = function (error) {
+  console.log(error)
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpError,
@@ -63,5 +71,7 @@ module.exports = {
   onLogOutSuccess,
   onLogOutError,
   onChangePwdSuccess,
-  onChangePwdError
+  onChangePwdError,
+  onViewProfileError,
+  onViewProfileSuccess
 }

@@ -40,11 +40,20 @@ const onChangePwd = function (e) {
     .catch(userUi.onChangePwdError)
 }
 
+const onViewProfile = function (e) {
+  e.preventDefault()
+  const data = store.user.id
+  userApi.viewProfile(data)
+    .then(userUi.onViewProfileSuccess)
+    .catch(userUi.onViewProfileError)
+}
+
 const addHandlers = () => {
   $('#signUpForm').on('submit', onSignUp)
   $('#signInForm').on('submit', onSignIn)
   $('#logOutBtn').on('click', onLogOut)
   $('#changePwdForm').on('submit', onChangePwd)
+  $('#viewProfileBtn').on('click', onViewProfile)
 }
 
 module.exports = {

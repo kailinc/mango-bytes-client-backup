@@ -39,9 +39,21 @@ const logOut = function () {
   })
 }
 
+const viewProfile = function (data) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiOrigin + '/users/' + data,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   create,
   signIn,
   logOut,
-  changePwd
+  changePwd,
+  viewProfile
 }
