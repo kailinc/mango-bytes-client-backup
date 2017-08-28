@@ -3,25 +3,19 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 #topNav {
   position: fixed;
+  box-sizing: border-box;
   top: 0;
   width: 100%;
-  margin-bottom: 100px;
-}
-
-#topNav2 {
-  margin-top: 0;
 }
 
 #header {
   box-sizing: border-box;
   background-color: black;
   color: white;
-  margin-bottom: 0;
 }
 
 
-footer {
-  margin-top: 100 px;
+#creds {
   position: fixed;
   bottom: 0;
   box-sizing: border-box;
@@ -50,4 +44,9 @@ footer {
 
 #userProfile {
   display: none;
+}
+
+.context {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
