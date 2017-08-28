@@ -5,13 +5,17 @@ const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
 const onSignUp = function (e) {
-  console.log('hello')
-  // e.preventDefault()
-  // const data = getFormFields(e.target)
-  // // console.log(data)
-  // userApi.add(data)
-  //   .then(userUi.onSignUpSuccess)
-  //   .catch(userUi.onSignUpError)
+  e.preventDefault()
+  const pwd = $('#pwd').val()
+  const pwdConfirm = $('#pwdConfirm').val()
+  if (pwd === pwdConfirm) {
+    const data = getFormFields(e.target)
+    userApi.create(data)
+      .then(userUi.onSignUpSuccess)
+      .catch(userUi.onSignUpError)
+  } else {
+    $('#signUpMsg').text('Password and Password Confirmation must match!')
+  }
 }
 
 // const onSignIn = function (e) {
@@ -57,7 +61,7 @@ const onSignUp = function (e) {
 // }
 
 const addHandlers = () => {
-  // $('#signUpBtn').on('click', onSignUp)
+  $('#signUpForm').on('submit', onSignUp)
   // $('#signIn').on('submit', onSignIn)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwd').on('submit', onChangePwd)

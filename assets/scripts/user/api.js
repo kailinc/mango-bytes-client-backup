@@ -2,13 +2,13 @@
 const store = require('../store')
 const config = require('../config.js')
 
-// const add = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/sign-up',
-//     method: 'POST',
-//     data
-//   })
-// }
+const create = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-up',
+    method: 'POST',
+    data
+  })
+}
 //
 // const signIn = function (data) {
 //   return $.ajax({
@@ -58,7 +58,7 @@ const config = require('../config.js')
 // }
 
 module.exports = {
-  // add,
+  create
   // signIn,
   // logOut,
   // changePwd,

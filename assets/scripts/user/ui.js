@@ -3,18 +3,18 @@ const store = require('../store')
 // const showUserShoesTemplate = require('../templates/user-shoes.handlebars')
 // const showUserCollectionsTemplate = require('../templates/user-collections.handlebars')
 
-// const onSignUpSuccess = function () {
-//   uiActions.clearForms()
-//   $('#signUpSuccess').css('display', 'block')
-//   $('#signUpError').css('display', 'none')
-// }
-//
-// const onSignUpError = function () {
-//   $('#signUpError').css('display', 'block')
-//   $('#signUpSuccess').css('display', 'none')
-//   uiActions.clearForms()
-// }
-//
+const onSignUpSuccess = function (data) {
+  $('#signUpForm').get(0).reset()
+  $('#signUpModal').modal('hide')
+  $('#alertSuccess').css('display', 'block').text('Well Done! You are signed in!')
+  $('#signUpError').css('display', 'none')
+}
+
+const onSignUpError = function (error) {
+  console.log(error)
+  $('#signUpMsg').text('There was a problem with signing up. The email is taken.')
+}
+
 // const onSignInSuccess = function (data) {
 //   $('#landingPage').css('display', 'none')
 //   $('#innerPage').css('display', 'block')
@@ -103,8 +103,8 @@ const store = require('../store')
 
 // have a function to clear all forms
 module.exports = {
-  // onSignUpSuccess,
-  // onSignUpError,
+  onSignUpSuccess,
+  onSignUpError
   // onSignInSuccess,
   // onSignInError,
   // onLogOutSuccess,
