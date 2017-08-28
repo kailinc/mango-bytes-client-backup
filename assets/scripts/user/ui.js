@@ -1,7 +1,7 @@
 'use strict'
 const store = require('../store')
 // const showUserShoesTemplate = require('../templates/user-shoes.handlebars')
-// const showUserCollectionsTemplate = require('../templates/user-collections.handlebars')
+const showUserProfileTemplate = require('../templates/user-profile.handlebars')
 
 const onSignUpSuccess = function (data) {
   $('#signUpForm').get(0).reset()
@@ -56,6 +56,9 @@ const onLogOutError = function (error) {
 }
 
 const onViewProfileSuccess = function (data) {
+  $('#userInfo').empty()
+  const showUserProfileHTML = showUserProfileTemplate({ user: data.user })
+  $('#userInfo').append(showUserProfileHTML)
   console.log(data)
 }
 
