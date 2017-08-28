@@ -68,6 +68,17 @@ const onViewProfileError = function (error) {
   console.log(error)
 }
 
+const onUpdateProfileSuccess = function () {
+  $('#alertSuccess').css('display', 'block').text('Well Done! You have updated your profile!')
+  $('#alertDanger').css('display', 'none')
+}
+
+const onUpdateProfileError = function (error) {
+  console.log(error)
+  $('#alertDanger').css('display', 'block').text('Sorry, there was a problem with updating your profile.')
+  $('#alertSuccess').css('display', 'none')
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpError,
@@ -78,5 +89,7 @@ module.exports = {
   onChangePwdSuccess,
   onChangePwdError,
   onViewProfileError,
-  onViewProfileSuccess
+  onViewProfileSuccess,
+  onUpdateProfileError,
+  onUpdateProfileSuccess
 }

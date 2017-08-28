@@ -50,10 +50,22 @@ const viewProfile = function (data) {
   })
 }
 
+const updateUser = function (data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiOrigin + '/update-user/' + store.user.id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   create,
   signIn,
   logOut,
   changePwd,
-  viewProfile
+  viewProfile,
+  updateUser
 }

@@ -48,12 +48,21 @@ const onViewProfile = function (e) {
     .catch(userUi.onViewProfileError)
 }
 
+const onUpdateProfile = function (e) {
+  e.preventDefault()
+  const data = getFormFields(e.target)
+  userApi.updateUser(data)
+    .then(userUi.onUpdateProfileSuccess)
+    .catch(userUi.onUpdateProfileError)
+}
+
 const addHandlers = () => {
   $('#signUpForm').on('submit', onSignUp)
   $('#signInForm').on('submit', onSignIn)
   $('#logOutBtn').on('click', onLogOut)
   $('#changePwdForm').on('submit', onChangePwd)
   $('#viewProfileBtn').on('click', onViewProfile)
+  $('#userInfo').on('submit', '#updateUserForm', onUpdateProfile)
 }
 
 module.exports = {
