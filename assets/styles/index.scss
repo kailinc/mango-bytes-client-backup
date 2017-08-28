@@ -1,19 +1,12 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-#topNav {
-  position: fixed;
-  box-sizing: border-box;
-  top: 0;
-  width: 100%;
-}
-
 #header {
-  box-sizing: border-box;
   background-color: black;
   color: white;
+  text-align: center;
+  width: 100%;
 }
-
 
 #creds {
   position: fixed;
