@@ -1,23 +1,17 @@
 'use strict'
-const userApi = require('./api.js')
-const userUi = require('./ui.js')
+const itemApi = require('./api.js')
+const itemUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
-// const onSignUp = function (e) {
-//   e.preventDefault()
-//   const pwd = $('#pwd').val()
-//   const pwdConfirm = $('#pwdConfirm').val()
-//   if (pwd === pwdConfirm) {
-//     const data = getFormFields(e.target)
-//     userApi.create(data)
-//       .then(userUi.onSignUpSuccess)
-//       .catch(userUi.onSignUpError)
-//   } else {
-//     $('#signUpMsg').text('Password and Password Confirmation must match!')
-//   }
-// }
-//
+const viewSkills = function (e) {
+  e.preventDefault()
+  const data = ''
+  itemApi.index(data)
+    .then(itemUi.onIndexItemSuccess)
+    .catch(itemUi.onIndexItemError)
+}
+
 // const onSignIn = function (e) {
 //   e.preventDefault()
 //   const data = getFormFields(e.target)
@@ -57,7 +51,7 @@ const store = require('../store')
 // }
 
 const addHandlers = () => {
-  // $('#signUpForm').on('submit', onSignUp)
+  $('#skillsBtn').on('click', viewSkills)
   // $('#signInForm').on('submit', onSignIn)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwdForm').on('submit', onChangePwd)

@@ -1,7 +1,15 @@
 'use strict'
 const store = require('../store')
 // const showUserShoesTemplate = require('../templates/user-shoes.handlebars')
-const showUserProfileTemplate = require('../templates/user-profile.handlebars')
+// const showUserProfileTemplate = require('../templates/user-profile.handlebars')
+
+const onIndexItemSuccess = function (data) {
+  console.log(data)
+}
+
+const onIndexItemError = function (error) {
+  console.log(error)
+}
 
 // const onSignUpSuccess = function (data) {
 //   $('#signUpForm').get(0).reset()
@@ -55,18 +63,7 @@ const showUserProfileTemplate = require('../templates/user-profile.handlebars')
 //   console.log(error)
 // }
 //
-// const onViewProfileSuccess = function (data) {
-//   $('#main').css('display', 'none')
-//   $('#userProfile').css('display', 'block')
-//   $('#userInfo').empty()
-//   const showUserProfileHTML = showUserProfileTemplate({ user: data.user })
-//   $('#userInfo').append(showUserProfileHTML)
-//   console.log(data)
-// }
-//
-// const onViewProfileError = function (error) {
-//   console.log(error)
-// }
+
 //
 // const onUpdateProfileSuccess = function () {
 //   $('#alertSuccess').css('display', 'block').text('Well Done! You have updated your profile!')
@@ -80,8 +77,8 @@ const showUserProfileTemplate = require('../templates/user-profile.handlebars')
 // }
 
 module.exports = {
-  // onSignUpSuccess,
-  // onSignUpError,
+  onIndexItemSuccess,
+  onIndexItemError
   // onSignInSuccess,
   // onSignInError,
   // onLogOutSuccess,
