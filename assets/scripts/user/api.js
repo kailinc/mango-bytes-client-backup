@@ -31,17 +31,15 @@ const signIn = function (data) {
 //   })
 // }
 //
-// const logOut = function () {
-//   // console.log(store.user.id)
-//   // console.log(store.user.id)
-//   return $.ajax({
-//     url: config.apiOrigin + '/sign-out/' + store.user.id,
-//     method: 'DELETE',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const logOut = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-out/' + store.user.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 //
 // const userShoes = function (data) {
 //   return $.ajax({
@@ -59,8 +57,8 @@ const signIn = function (data) {
 
 module.exports = {
   create,
-  signIn
-  // logOut,
+  signIn,
+  logOut
   // changePwd,
   // userShoes,
   // userCollections

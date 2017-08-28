@@ -21,6 +21,8 @@ const onSignInSuccess = function (data) {
   $('#signInMsg').text(' ')
   $('#signInForm').get(0).reset()
   $('#signInModal').modal('hide')
+  $('.userIn').css('display', 'block')
+  $('.userOut').css('display', 'none')
 }
 
 const onSignInError = function (error) {
@@ -43,21 +45,17 @@ const onSignInError = function (error) {
 //   $('#successNotify').css('display', 'none')
 // }
 //
-// const onLogOutSuccess = function () {
-//   // console.log('logged out')
-//   store.user = null
-//   $('#landingPage').css('display', 'block')
-//   $('#innerPage').css('display', 'none')
-//   $('#errorNotify').css('display', 'none')
-//   $('#successNotify').css('display', 'none')
-//   $('#signUpSuccess').css('display', 'none')
-//   $('#signUpError').css('display', 'none')
-// }
-//
-// const onLogOutError = function (error) {
-//   // console.log(error)
-// }
-//
+const onLogOutSuccess = function () {
+  store.user = null
+  console.log('logged out')
+  $('.userIn').css('display', 'none')
+  $('.userOut').css('display', 'block')
+}
+
+const onLogOutError = function (error) {
+  console.log(error)
+}
+
 // const onUserShoesSuccess = function (data) {
 //   $('#content').empty()
 //
@@ -105,9 +103,9 @@ module.exports = {
   onSignUpSuccess,
   onSignUpError,
   onSignInSuccess,
-  onSignInError
-  // onLogOutSuccess,
-  // onLogOutError,
+  onSignInError,
+  onLogOutSuccess,
+  onLogOutError
   // onChangePwdSuccess,
   // onChangePwdError,
   // onUserShoesSuccess,
