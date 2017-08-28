@@ -1,6 +1,6 @@
 
 <!-- FORM FOR UPDATING USER PROFILE -->
-<div style="margin-top:200px;">
+<div style="margin-top:100px;">
   <form id="updateUserForm">
     <h3>Your Profile</h3>
     <div class="form-group">
@@ -25,23 +25,24 @@
   </form>
 
   <!-- PLACE SHOWING A USER'S SUPER POWERS -->
-  <div>
-    <div class="container">
-      <div class="row">
-        {{#each user.powers as |power|}}
-          <div class="col-sm-4">
-            <img src="{{power.img}}" style="width: 100px;">
-            <h3>{{power.name}}</h3>
-          </div>
-        {{/each}}
+  <div class="row">
+    <h1>Your Super Powers</h1>
+    {{#each user.powers as |power|}}
+      <div class="col-sm-4">
+        <img src="{{power.img}}" style="width: 100px;">
+        <h3>{{power.name}}</h3>
       </div>
-    </div>
+    {{/each}}
   </div>
 
 
 
-  <!-- PLACE FOR SHOWING A USER'S SKILLS -->
-  <div>
-  </div>
+  <!-- PLACE SHOWING A USER'S Skills -->
+    <h1>Your Skills: </h1>
+    <h3>{</h3>
+    {{#each user.skills as |skill|}}
+      <p><span>{{skill.name}}</span>: {{skill.level}}</p>
+    {{/each}}
+    <h3>}</h3>
 
 </div>
