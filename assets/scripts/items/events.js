@@ -4,10 +4,8 @@ const itemUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
-const viewSkills = function (e) {
-  e.preventDefault()
-  const data = ''
-  itemApi.index(data)
+const viewAll = function () {
+  itemApi.index()
     .then(itemUi.onIndexItemSuccess)
     .catch(itemUi.onIndexItemError)
 }
@@ -51,7 +49,7 @@ const viewSkills = function (e) {
 // }
 
 const addHandlers = () => {
-  $('#skillsBtn').on('click', viewSkills)
+  $('#allBtn').on('click', viewAll)
   // $('#signInForm').on('submit', onSignIn)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwdForm').on('submit', onChangePwd)

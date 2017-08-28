@@ -4,6 +4,7 @@ const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 
 const user = require('./user/events.js')
+const item = require('./items/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -16,4 +17,5 @@ $(() => {
 
 $(() => {
   user.addHandlers()
+  item.addHandlers()
 })

@@ -2,14 +2,13 @@
 const store = require('../store')
 const config = require('../config.js')
 
-const index = function (data) {
+const index = function () {
   return $.ajax({
     method: 'GET',
-    url: config.apiOrigin + '/items/' + data,
+    url: config.apiOrigin + '/items',
     headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data
+      Authorization: 'Token token=W22m8DScP6ksAPy3jZBYgR0f2SJxji9jfFI3m0K1DD8=--yL1HkDIgU6a5SP8MddRV+KpRMgjTG3guENBYQHUP3ps='
+    }
   })
 }
 

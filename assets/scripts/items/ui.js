@@ -1,10 +1,13 @@
 'use strict'
 const store = require('../store')
-// const showUserShoesTemplate = require('../templates/user-shoes.handlebars')
-// const showUserProfileTemplate = require('../templates/user-profile.handlebars')
+
+const showItemTemplate = require('../templates/items.handlebars')
 
 const onIndexItemSuccess = function (data) {
   console.log(data)
+  $('#items').empty()
+  const showItemHTML = showItemTemplate({ items: data.items })
+  $('#items').append(showItemHTML)
 }
 
 const onIndexItemError = function (error) {
