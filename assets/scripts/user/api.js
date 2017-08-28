@@ -18,19 +18,17 @@ const signIn = function (data) {
   })
 }
 
-// const changePwd = function (data) {
-//   // console.log(data)
-//   // console.log(store)
-//   return $.ajax({
-//     method: 'PATCH',
-//     url: config.apiOrigin + '/change-password/' + store.user.id,
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data
-//   })
-// }
-//
+const changePwd = function (data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiOrigin + '/change-password/' + store.user.id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const logOut = function () {
   return $.ajax({
     url: config.apiOrigin + '/sign-out/' + store.user.id,
@@ -40,26 +38,10 @@ const logOut = function () {
     }
   })
 }
-//
-// const userShoes = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/user-shoes/' + data,
-//     method: 'GET'
-//   })
-// }
-//
-// const userCollections = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/user-collections/' + data,
-//     method: 'GET'
-//   })
-// }
 
 module.exports = {
   create,
   signIn,
-  logOut
-  // changePwd,
-  // userShoes,
-  // userCollections
+  logOut,
+  changePwd
 }

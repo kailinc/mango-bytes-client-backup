@@ -30,24 +30,23 @@ const onSignInError = function (error) {
   $('#signInMsg').text('There was a problem with signing in. The email/password do not match or the account is not signed up.')
   $('#signInForm').get(0).reset()
 }
-//
-// const onChangePwdSuccess = function () {
-//   uiActions.clearForms()
-//   $('#changePwdModal').modal('hide')
-//   $('#successNotify').css('display', 'block').text('You have changed your password')
-//   $('#errorNotify').css('display', 'none')
-//
-// }
-// const onChangePwdError = function (error) {
-//   uiActions.clearForms()
-//   $('#changePwdModal').modal('hide')
-//   $('#errorNotify').css('display', 'block').text('The password you gave was wrong')
-//   $('#successNotify').css('display', 'none')
-// }
-//
+
+const onChangePwdSuccess = function () {
+  $('#changePwdForm').get(0).reset()
+  $('#changePwdModal').modal('hide')
+  $('#alertSuccess').css('display', 'block').text('Well Done! You have changed your password!')
+  $('#changePwdMsg').text(' ')
+  $('#alertDanger').css('display', 'none')
+}
+
+const onChangePwdError = function (error) {
+  console.log(error)
+  $('#changePwdForm').get(0).reset()
+  $('#changePwdMsg').text('There was a problem changing your password.')
+}
+
 const onLogOutSuccess = function () {
   store.user = null
-  console.log('logged out')
   $('.userIn').css('display', 'none')
   $('.userOut').css('display', 'block')
 }
@@ -56,60 +55,13 @@ const onLogOutError = function (error) {
   console.log(error)
 }
 
-// const onUserShoesSuccess = function (data) {
-//   $('#content').empty()
-//
-//   if (data.user.shoes.length === 0) {
-//     $('#errorNotify').css('display', 'block').text('You don\'t have any shoes. Add some shoes to see shoes.')
-//     $('#successNotify').css('display', 'none')
-//   } else {
-//     const showUserShoesHTML = showUserShoesTemplate({ shoes: data.user.shoes })
-//     $('#content').append(showUserShoesHTML)
-//     // event handlers
-//     $('.deleteShoeBtn').on('click', shoe.deleteShoe)
-//     $('.viewShoeBtn').on('click', shoe.viewShoe)
-//     $('.editShoeBtn').on('click', shoe.openEditModal)
-//     $('#editShoeForm').on('submit', shoe.editShoe)
-//   }
-// }
-//
-// const onUserShoesError = function (error) {
-//   // console.log(error)
-// }
-//
-// const onUserCollectionsSuccess = function (data) {
-//   $('#content').empty()
-//   if (data.user.collections.length === 0) {
-//     $('#errorNotify').css('display', 'block').text('You don\'t have any collections. Add some collections to see collections')
-//     $('#successNotify').css('display', 'none')
-//   } else {
-//     const showUserCollectionsHTML = showUserCollectionsTemplate({ collections: data.user.collections })
-//     $('#content').append(showUserCollectionsHTML)
-//
-//       // EVENT LISTNERS FOR COLLECTION ACTIONS
-//     $('.deleteCollectionBtn').on('click', collection.deleteCol)
-//     $('.viewCollectionBtn').on('click', collection.showCol)
-//     $('.editCollectionBtn').on('click', collection.openEditColModal)
-//     $('#editColForm').on('submit', collection.editCol)
-//   }
-// }
-//
-// const onUserCollectionsError = function (error) {
-//   // console.log(error)
-// }
-
-// have a function to clear all forms
 module.exports = {
   onSignUpSuccess,
   onSignUpError,
   onSignInSuccess,
   onSignInError,
   onLogOutSuccess,
-  onLogOutError
-  // onChangePwdSuccess,
-  // onChangePwdError,
-  // onUserShoesSuccess,
-  // onUserShoesError,
-  // onUserCollectionsSuccess,
-  // onUserCollectionsError
+  onLogOutError,
+  onChangePwdSuccess,
+  onChangePwdError
 }

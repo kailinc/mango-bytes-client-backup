@@ -52,7 +52,7 @@
                   <ul class="dropdown-menu">
                     <li class="userOut"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#signUpModal">Sign Up</button></li>
                     <li class="userOut"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#signInModal">Sign In</button></li>
-                    <li class="userIn"><button type="button" class="btn btn-default">Update Password</button></li>
+                    <li class="userIn"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#changePwdModal">Update Password</button></li>
                     <li class="userIn"><button type="button" class="btn btn-default">View Your Profile</button></li>
                     <li class="userIn"><button id="logOutBtn" type="button" class="btn btn-default">Log Out</button></li>
                   </ul>
@@ -193,6 +193,43 @@
           </div>
         </div>
       </div>
+
+
+
+      <!-- MODAL FOR CHANGING PASSWORD-->
+      <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+            </div>
+            <div class="modal-body">
+              <h3 id="changePwdMsg"></h3>
+              <form id="changePwdForm" class="form-horizontal">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Current Password</label>
+                  <div class="col-sm-6">
+                    <input type="password" name="passwords[old]" class="form-control" placeholder="Current Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-4 control-label">New Password</label>
+                  <div class="col-sm-6">
+                    <input id="pwd" type="password" name="passwords[new]" class="form-control" placeholder="New Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-10">
+                    <button type="submit" class="btn btn-default">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <footer>
         <p>Made by  <a href="https://github.com/kailinc">Kai</a></p>

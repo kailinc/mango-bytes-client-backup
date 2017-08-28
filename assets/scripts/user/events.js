@@ -32,38 +32,19 @@ const onLogOut = function () {
     .catch(userUi.onLogOutError)
 }
 
-// const onChangePwd = function (e) {
-//   e.preventDefault()
-//   const data = getFormFields(e.target)
-//   // console.log(data)
-//   userApi.changePwd(data)
-//     .then(userUi.onChangePwdSuccess)
-//     .catch(userUi.onChangePwdError)
-// }
-//
-// const onUserShoes = function () {
-//   $('#successNotify').css('display', 'none')
-//   $('#errorNotify').css('display', 'none')
-//   const userId = store.user.id
-//   userApi.userShoes(userId)
-//     .then(userUi.onUserShoesSuccess)
-//     .catch(userUi.onUserShoesError)
-// }
-//
-// const onUserCollections = function () {
-//   $('#successNotify').css('display', 'none')
-//   $('#errorNotify').css('display', 'none')
-//   const userId = store.user.id
-//   userApi.userCollections(userId)
-//     .then(userUi.onUserCollectionsSuccess)
-//     .catch(userUi.onUserCollectionsError)
-// }
+const onChangePwd = function (e) {
+  e.preventDefault()
+  const data = getFormFields(e.target)
+  userApi.changePwd(data)
+    .then(userUi.onChangePwdSuccess)
+    .catch(userUi.onChangePwdError)
+}
 
 const addHandlers = () => {
   $('#signUpForm').on('submit', onSignUp)
   $('#signInForm').on('submit', onSignIn)
   $('#logOutBtn').on('click', onLogOut)
-  // $('#changePwd').on('submit', onChangePwd)
+  $('#changePwdForm').on('submit', onChangePwd)
 }
 
 module.exports = {
