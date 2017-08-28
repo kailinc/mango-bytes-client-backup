@@ -9,15 +9,15 @@ const create = function (data) {
     data
   })
 }
-//
-// const signIn = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/sign-in',
-//     method: 'POST',
-//     data
-//   })
-// }
-//
+
+const signIn = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/sign-in',
+    method: 'POST',
+    data
+  })
+}
+
 // const changePwd = function (data) {
 //   // console.log(data)
 //   // console.log(store)
@@ -58,8 +58,8 @@ const create = function (data) {
 // }
 
 module.exports = {
-  create
-  // signIn,
+  create,
+  signIn
   // logOut,
   // changePwd,
   // userShoes,

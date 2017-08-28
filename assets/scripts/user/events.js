@@ -18,14 +18,13 @@ const onSignUp = function (e) {
   }
 }
 
-// const onSignIn = function (e) {
-//   e.preventDefault()
-//   const data = getFormFields(e.target)
-//   // console.log(data)
-//   userApi.signIn(data)
-//     .then(userUi.onSignInSuccess)
-//     .catch(userUi.onSignInError)
-// }
+const onSignIn = function (e) {
+  e.preventDefault()
+  const data = getFormFields(e.target)
+  userApi.signIn(data)
+    .then(userUi.onSignInSuccess)
+    .catch(userUi.onSignInError)
+}
 //
 // const onLogOut = function () {
 //   userApi.logOut()
@@ -62,7 +61,7 @@ const onSignUp = function (e) {
 
 const addHandlers = () => {
   $('#signUpForm').on('submit', onSignUp)
-  // $('#signIn').on('submit', onSignIn)
+  $('#signInForm').on('submit', onSignIn)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwd').on('submit', onChangePwd)
 }

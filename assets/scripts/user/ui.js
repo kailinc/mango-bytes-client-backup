@@ -5,6 +5,7 @@ const store = require('../store')
 
 const onSignUpSuccess = function (data) {
   $('#signUpForm').get(0).reset()
+  $('#signUpMsg').text(' ')
   $('#signUpModal').modal('hide')
   $('#alertSuccess').css('display', 'block').text('Well Done! You are signed in!')
   $('#signUpError').css('display', 'none')
@@ -15,20 +16,18 @@ const onSignUpError = function (error) {
   $('#signUpMsg').text('There was a problem with signing up. The email is taken.')
 }
 
-// const onSignInSuccess = function (data) {
-//   $('#landingPage').css('display', 'none')
-//   $('#innerPage').css('display', 'block')
-//   store.user = data.user
-//   $('#errorNotify').css('display', 'none')
-//   uiActions.clearForms()
-//   $('#content').empty()
-// }
-//
-// const onSignInError = function (error) {
-//   uiActions.clearForms()
-//   $('#errorNotify').css('display', 'block').text("Either the password/username doesn't match or the account is taken.")
-//   // console.log(error)
-// }
+const onSignInSuccess = function (data) {
+  store.user = data.user
+  $('#signInMsg').text(' ')
+  $('#signInForm').get(0).reset()
+  $('#signInModal').modal('hide')
+}
+
+const onSignInError = function (error) {
+  console.log(error)
+  $('#signInMsg').text('There was a problem with signing in. The email/password do not match or the account is not signed up.')
+  $('#signInForm').get(0).reset()
+}
 //
 // const onChangePwdSuccess = function () {
 //   uiActions.clearForms()
@@ -104,9 +103,9 @@ const onSignUpError = function (error) {
 // have a function to clear all forms
 module.exports = {
   onSignUpSuccess,
-  onSignUpError
-  // onSignInSuccess,
-  // onSignInError,
+  onSignUpError,
+  onSignInSuccess,
+  onSignInError
   // onLogOutSuccess,
   // onLogOutError,
   // onChangePwdSuccess,
