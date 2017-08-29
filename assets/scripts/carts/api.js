@@ -13,14 +13,16 @@ const index = function (data) {
   })
 }
 
-// const create = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/sign-up',
-//     method: 'POST',
-//     data
-//   })
-// }
-//
+const show = function (data) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiOrigin + '/carts/' + data,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 // const signIn = function (data) {
 //   return $.ajax({
 //     url: config.apiOrigin + '/sign-in',
@@ -64,8 +66,8 @@ const index = function (data) {
 // }
 
 module.exports = {
-  index
-  // signIn,
+  index,
+  show
   // logOut,
   // changePwd,
   // viewProfile,

@@ -1,6 +1,7 @@
 'use strict'
 const store = require('../store')
 const showCartsTemplate = require('../templates/carts.handlebars')
+const showCartTemplate = require('../templates/cart.handlebars')
 
 // function to loop through data to change date formate with filterDate()
 const modifyTime = function (data) {
@@ -45,22 +46,20 @@ const onGetCartsSuccess = function (data) {
 const onGetCartsError = function (error) {
   console.log(error)
 }
-//
-// const onSignInSuccess = function (data) {
-//   store.user = data.user
-//   $('#signInMsg').text(' ')
-//   $('#signInForm').get(0).reset()
-//   $('#signInModal').modal('hide')
-//   $('.userIn').css('display', 'block')
-//   $('.userOut').css('display', 'none')
-// }
-//
-// const onSignInError = function (error) {
-//   console.log(error)
-//   $('#signInMsg').text('There was a problem with signing in. The email/password do not match or the account is not signed up.')
-//   $('#signInForm').get(0).reset()
-// }
-//
+
+const onViewCartSuccess = function (data) {
+  data.cart.upDatedAt = filterDate(data.cart.updatedAt)
+  $('#userProfile').css('display', 'none')
+  $('#firstJumbo').css('display', 'none')
+  $('#items').empty()
+  const showCartHTML = showCartTemplate({ cart: data.cart })
+  $('#items').append(showCartHTML)
+}
+
+const onViewCartError = function (error) {
+  console.log(error)
+}
+
 // const onChangePwdSuccess = function () {
 //   $('#changePwdForm').get(0).reset()
 //   $('#changePwdModal').modal('hide')
@@ -111,6 +110,7 @@ const onGetCartsError = function (error) {
 
 module.exports = {
   onGetCartsSuccess,
-  onGetCartsError
-  // onSignInSuccess
+  onGetCartsError,
+  onViewCartSuccess,
+  onViewCartError
 }
