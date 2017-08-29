@@ -1,0 +1,12 @@
+<div class="row">
+  <h1>Products </h1>
+  {{#each items as |item|}}
+    <div class="col-sm-4" data-id={{item.id}} data-name={{item.name}} data-price={{item.basePrice}} data-dev-cred={{item.devCred}}>
+      <img src="{{item.img}}" style="width: 150px;">
+      <h3>{{item.name}}</h3>
+      <p>Price: ${{item.basePrice}}</p>
+      <p>devCred: {{item.devCred}}</p>
+      <button class="viewItemBtn">View</button>
+    </div>
+  {{/each}}
+</div>

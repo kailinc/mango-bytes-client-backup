@@ -1,13 +1,12 @@
 'use strict'
 const store = require('../store')
 
-const showItemTemplate = require('../templates/items.handlebars')
+const showItemsTemplate = require('../templates/items.handlebars')
 
 const onIndexItemSuccess = function (data) {
-  console.log(data)
   $('#items').empty()
-  const showItemHTML = showItemTemplate({ items: data.items })
-  $('#items').append(showItemHTML)
+  const showItemsHTML = showItemsTemplate({ items: data.items })
+  $('#items').append(showItemsHTML)
 }
 
 const onIndexItemError = function (error) {
@@ -15,7 +14,9 @@ const onIndexItemError = function (error) {
 }
 
 const onViewItemSuccess = function (data) {
-  console.log(data)
+  // $('#items').empty()
+  // const showItemHTML = showItemTemplate({ items: data.items })
+  // $('#items').append(showItemHTML)
 }
 
 const onViewItemError = function (error) {
