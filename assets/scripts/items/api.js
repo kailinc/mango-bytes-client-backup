@@ -12,14 +12,16 @@ const index = function () {
   })
 }
 
-// const create = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/sign-up',
-//     method: 'POST',
-//     data
-//   })
-// }
-//
+const show = function (itemId) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiOrigin + '/items/' + itemId,
+    headers: {
+      Authorization: 'Token token=W22m8DScP6ksAPy3jZBYgR0f2SJxji9jfFI3m0K1DD8=--yL1HkDIgU6a5SP8MddRV+KpRMgjTG3guENBYQHUP3ps='
+    }
+  })
+}
+
 // const signIn = function (data) {
 //   return $.ajax({
 //     url: config.apiOrigin + '/sign-in',
@@ -63,8 +65,8 @@ const index = function () {
 // }
 
 module.exports = {
-  index
-  // signIn,
+  index,
+  show
   // logOut,
   // changePwd,
   // viewProfile,

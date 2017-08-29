@@ -10,13 +10,12 @@ const viewAll = function () {
     .catch(itemUi.onIndexItemError)
 }
 
-// const onSignIn = function (e) {
-//   e.preventDefault()
-//   const data = getFormFields(e.target)
-//   userApi.signIn(data)
-//     .then(userUi.onSignInSuccess)
-//     .catch(userUi.onSignInError)
-// }
+const onViewItem = function () {
+  const itemId = $(this).parent().data('id')
+  itemApi.show(itemId)
+    .then(itemUi.onViewItemSuccess)
+    .catch(itemUi.onViewItemError)
+}
 //
 // const onLogOut = function () {
 //   userApi.logOut()
@@ -50,7 +49,7 @@ const viewAll = function () {
 
 const addHandlers = () => {
   $('#allBtn').on('click', viewAll)
-  // $('#signInForm').on('submit', onSignIn)
+  $('#items').on('click', '.viewItemBtn', onViewItem)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwdForm').on('submit', onChangePwd)
   // $('#viewProfileBtn').on('click', onViewProfile)
