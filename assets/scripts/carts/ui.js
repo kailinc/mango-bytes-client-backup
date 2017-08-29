@@ -66,19 +66,15 @@ const onViewCartError = function (error) {
   console.log(error)
 }
 
-// const onChangePwdSuccess = function () {
-//   $('#changePwdForm').get(0).reset()
-//   $('#changePwdModal').modal('hide')
-//   $('#alertSuccess').css('display', 'block').text('Well Done! You have changed your password!')
-//   $('#changePwdMsg').text(' ')
-//   $('#alertDanger').css('display', 'none')
-// }
-//
-// const onChangePwdError = function (error) {
-//   console.log(error)
-//   $('#changePwdForm').get(0).reset()
-//   $('#changePwdMsg').text('There was a problem changing your password.')
-// }
+const onDestroyCartSuccess = function () {
+  $('#userProfile').css('display', 'none')
+  $('#firstJumbo').css('display', 'none')
+  $('#items').empty()
+}
+
+const onDestroyCartError = function (error) {
+  console.log(error)
+}
 //
 // const onLogOutSuccess = function () {
 //   store.user = null
@@ -118,5 +114,7 @@ module.exports = {
   onGetCartsSuccess,
   onGetCartsError,
   onViewCartSuccess,
-  onViewCartError
+  onViewCartError,
+  onDestroyCartSuccess,
+  onDestroyCartError
 }

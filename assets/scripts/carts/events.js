@@ -30,13 +30,14 @@ const onViewCart = function () {
     .catch(cartUi.onViewCartError)
 }
 
-//
-// const onLogOut = function () {
-//   userApi.logOut()
-//     .then(userUi.onLogOutSuccess)
-//     .catch(userUi.onLogOutError)
-// }
-//
+const onDeleteCart = function () {
+  const data = $(this).parent().data('id')
+  cartApi.destroy(data)
+    .then(cartUi.onDestroyCartSuccess)
+    .then(onGetCarts)
+    .catch(cartUi.onDestroyCartError)
+}
+
 // const onChangePwd = function (e) {
 //   e.preventDefault()
 //   const data = getFormFields(e.target)
@@ -64,7 +65,7 @@ const onViewCart = function () {
 const addHandlers = () => {
   $('#cartBtn').on('click', onGetCarts)
   $('#items').on('click', '.viewCartBtn', onViewCart)
-  // $('#signInForm').on('submit', onSignIn)
+  $('#items').on('click', '.clearCartBtn', onDeleteCart)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwdForm').on('submit', onChangePwd)
   // $('#viewProfileBtn').on('click', onViewProfile)

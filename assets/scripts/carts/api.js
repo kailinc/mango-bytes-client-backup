@@ -23,6 +23,16 @@ const show = function (data) {
   })
 }
 
+const destroy = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/carts/' + data,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 // const signIn = function (data) {
 //   return $.ajax({
 //     url: config.apiOrigin + '/sign-in',
@@ -67,7 +77,8 @@ const show = function (data) {
 
 module.exports = {
   index,
-  show
+  show,
+  destroy
   // logOut,
   // changePwd,
   // viewProfile,
