@@ -2,6 +2,7 @@
 const store = require('../store')
 const showCartsTemplate = require('../templates/carts.handlebars')
 const showCartTemplate = require('../templates/cart.handlebars')
+const showPaidCartTemplate = require('../templates/paid-cart.handlebars')
 
 // function to loop through data to change date formate with filterDate()
 const modifyTime = function (data) {
@@ -48,11 +49,16 @@ const onGetCartsError = function (error) {
 }
 
 const onViewCartSuccess = function (data) {
+  let showCartHTML = ''
   data.cart.updatedAt = filterDate(data.cart.updatedAt)
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
-  const showCartHTML = showCartTemplate({ cart: data.cart })
+  if (data.cart.isPaid === false) {
+    showCartHTML = showCartTemplate({ cart: data.cart })
+  } else {
+    showCartHTML = showPaidCartTemplate({ cart: data.cart })
+  }
   $('#items').append(showCartHTML)
 }
 
