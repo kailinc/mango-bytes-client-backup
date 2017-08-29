@@ -5,6 +5,7 @@ const config = require('./config')
 
 const user = require('./user/events.js')
 const item = require('./items/events.js')
+const cart = require('./carts/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -18,4 +19,5 @@ $(() => {
 $(() => {
   user.addHandlers()
   item.addHandlers()
+  cart.addHandlers()
 })

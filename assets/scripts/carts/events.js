@@ -1,22 +1,14 @@
 'use strict'
-const userApi = require('./api.js')
-const userUi = require('./ui.js')
+const cartApi = require('./api.js')
+const cartUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
-// const onSignUp = function (e) {
-//   e.preventDefault()
-//   const pwd = $('#pwd').val()
-//   const pwdConfirm = $('#pwdConfirm').val()
-//   if (pwd === pwdConfirm) {
-//     const data = getFormFields(e.target)
-//     userApi.create(data)
-//       .then(userUi.onSignUpSuccess)
-//       .catch(userUi.onSignUpError)
-//   } else {
-//     $('#signUpMsg').text('Password and Password Confirmation must match!')
-//   }
-// }
+const onGetCarts = function () {
+  cartApi.index()
+    .then(cartUi.onGetCartsSuccess)
+    .catch(cartUi.onGetCartsError)
+}
 //
 // const onSignIn = function (e) {
 //   e.preventDefault()
@@ -57,7 +49,7 @@ const store = require('../store')
 // }
 
 const addHandlers = () => {
-  // $('#signUpForm').on('submit', onSignUp)
+  $('#cartBtn').on('click', onGetCarts)
   // $('#signInForm').on('submit', onSignIn)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwdForm').on('submit', onChangePwd)
