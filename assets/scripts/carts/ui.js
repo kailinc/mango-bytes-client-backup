@@ -2,12 +2,24 @@
 const store = require('../store')
 const showCartsTemplate = require('../templates/carts.handlebars')
 
+const modifyTime = function (data) {
+  for (let i = 0; i < data.length; i++) {
+    data[i].updatedAt = filterDate(data[i].updatedAt)
+  }
+  return data
+}
+
+const filterDate = function (date) {
+  return date.split('T')[0]
+}
+
 const onGetCartsSuccess = function (data) {
-  console.log(data)
+  // console.log(data)
+  const modDate = modifyTime(data)
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
-  const showCartsHTML = showCartsTemplate({ carts: data })
+  const showCartsHTML = showCartsTemplate({ carts: modDate })
   $('#items').append(showCartsHTML)
 }
 
