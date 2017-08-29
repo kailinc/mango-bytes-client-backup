@@ -14,12 +14,12 @@
         {{/each}}
 
       </div>
-
       <div class="col-sm-4" data-id={{cart._id}}>
         <h4>${{cart.totalPrice}}</h4>
         <h4>DevCred: {{cart.totalDevCred}}</h4>
         <h4>Paid: {{cart.isPaid}}</h4>
-        <button class="btn btn-default viewCartBtn">View</button>
+        <button class="btn btn-default clearCartBtn">Clear Cart</button>
+        <button class="btn btn-default checkOutBtn">Check Out</button>
       </div>
     </div>
     <hr>

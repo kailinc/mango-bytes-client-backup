@@ -48,7 +48,7 @@ const onGetCartsError = function (error) {
 }
 
 const onViewCartSuccess = function (data) {
-  data.cart.upDatedAt = filterDate(data.cart.updatedAt)
+  data.cart.updatedAt = filterDate(data.cart.updatedAt)
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
