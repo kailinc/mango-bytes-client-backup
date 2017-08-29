@@ -1,10 +1,14 @@
 'use strict'
 const store = require('../store')
-// const showUserShoesTemplate = require('../templates/user-shoes.handlebars')
-// const showUserProfileTemplate = require('../templates/user-profile.handlebars')
+const showCartsTemplate = require('../templates/carts.handlebars')
 
 const onGetCartsSuccess = function (data) {
   console.log(data)
+  $('#userProfile').css('display', 'none')
+  $('#firstJumbo').css('display', 'none')
+  $('#items').empty()
+  const showCartsHTML = showCartsTemplate({ carts: data })
+  $('#items').append(showCartsHTML)
 }
 
 const onGetCartsError = function (error) {
