@@ -2,6 +2,7 @@
 const store = require('../store')
 const showCartsTemplate = require('../templates/carts.handlebars')
 
+// function to loop through data to change date formate with filterDate()
 const modifyTime = function (data) {
   for (let i = 0; i < data.length; i++) {
     data[i].updatedAt = filterDate(data[i].updatedAt)
@@ -9,13 +10,31 @@ const modifyTime = function (data) {
   return data
 }
 
+// returns just the date in string
 const filterDate = function (date) {
   return date.split('T')[0]
+}
+
+const sortData = function (data) {
+  data.sort(function () {
+
+  })
 }
 
 const onGetCartsSuccess = function (data) {
   // console.log(data)
   const modDate = modifyTime(data)
+  modDate.sort(function (a, b) {
+    let nameA = a.isPaid.toString().toUpperCase()
+    let nameB = b.isPaid.toString().toUpperCase()
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+    return 0
+  })
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()

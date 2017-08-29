@@ -4,7 +4,8 @@
   <hr>
     <div class="col-sm-12 carts">
       <hr>
-      <p>{{cart.updatedAt}}  Order ID: {{cart._id}}</p>
+      <p>{{cart.updatedAt}}</p>
+      <p>Order#: {{cart._id}}</p>
       <hr>
       <div class="col-sm-8">
         {{#each cart.products as |product|}}
