@@ -2,6 +2,7 @@
 const store = require('../store')
 
 const showItemsTemplate = require('../templates/items.handlebars')
+const showItemTemplate = require('../templates/item.handlebars')
 
 const onIndexItemSuccess = function (data) {
   $('#items').empty()
@@ -14,9 +15,10 @@ const onIndexItemError = function (error) {
 }
 
 const onViewItemSuccess = function (data) {
-  // $('#items').empty()
-  // const showItemHTML = showItemTemplate({ items: data.items })
-  // $('#items').append(showItemHTML)
+  console.log(data)
+  $('#items').empty()
+  const showItemHTML = showItemTemplate({ item: data.item })
+  $('#items').append(showItemHTML)
 }
 
 const onViewItemError = function (error) {

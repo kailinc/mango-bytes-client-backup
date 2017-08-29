@@ -1,12 +1,26 @@
 <div class="row">
-  <h1>Products </h1>
-  {{#each items as |item|}}
-    <div class="col-sm-4" data-id={{item.id}} data-name={{item.name}} data-price={{item.basePrice}} data-dev-cred={{item.devCred}}>
-      <img src="{{item.img}}" style="width: 150px;">
+    <div class="col-sm-5">
+      <img src="{{item.img}}" style="width: 300px;">
+    </div>
+    <div class="col-sm-5">
       <h3>{{item.name}}</h3>
+      <h5>{{item.type}}</h5>
       <p>Price: ${{item.basePrice}}</p>
       <p>devCred: {{item.devCred}}</p>
-      <button class="viewItemBtn">View</button>
+      <p>Description: {{item.des}}</p>
+      <p>Attributes: {{item.attributes}}</p>
+      <form class="itemForm form-horizontal" data-id={{item.id}} data-name={{item.name}} data-price={{item.basePrice}} data-dev-cred={{item.devCred}}>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">Quantity</label>
+            <div class="col-sm-7">
+              <input type="number" name="credentials[email]" class="form-control" placeholder="ex. 10">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+              <button type="submit" class="btn btn-default">Add to Cart</button>
+            </div>
+          </div>
+      </form>
     </div>
-  {{/each}}
 </div>
