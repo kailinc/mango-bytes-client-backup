@@ -2,6 +2,17 @@
 const store = require('../store')
 const config = require('../config.js')
 
+const index = function (data) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiOrigin + '/carts',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 // const create = function (data) {
 //   return $.ajax({
 //     url: config.apiOrigin + '/sign-up',
@@ -39,16 +50,7 @@ const config = require('../config.js')
 //   })
 // }
 //
-// const viewProfile = function (data) {
-//   return $.ajax({
-//     method: 'GET',
-//     url: config.apiOrigin + '/users/' + data,
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data
-//   })
-// }
+
 //
 // const updateUser = function (data) {
 //   return $.ajax({
@@ -62,7 +64,7 @@ const config = require('../config.js')
 // }
 
 module.exports = {
-  // create,
+  index
   // signIn,
   // logOut,
   // changePwd,

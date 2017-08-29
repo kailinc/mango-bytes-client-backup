@@ -2,19 +2,14 @@
 const store = require('../store')
 // const showUserShoesTemplate = require('../templates/user-shoes.handlebars')
 // const showUserProfileTemplate = require('../templates/user-profile.handlebars')
-//
-// const onSignUpSuccess = function (data) {
-//   $('#signUpForm').get(0).reset()
-//   $('#signUpMsg').text(' ')
-//   $('#signUpModal').modal('hide')
-//   $('#alertSuccess').css('display', 'block').text('Well Done! You are signed in!')
-//   $('#signUpError').css('display', 'none')
-// }
-//
-// const onSignUpError = function (error) {
-//   console.log(error)
-//   $('#signUpMsg').text('There was a problem with signing up. The email is taken.')
-// }
+
+const onGetCartsSuccess = function (data) {
+  console.log(data)
+}
+
+const onGetCartsError = function (error) {
+  console.log(error)
+}
 //
 // const onSignInSuccess = function (data) {
 //   store.user = data.user
@@ -80,7 +75,7 @@ const store = require('../store')
 // }
 
 module.exports = {
-  // onSignUpSuccess,
-  // onSignUpError,
+  onGetCartsSuccess,
+  onGetCartsError
   // onSignInSuccess
 }

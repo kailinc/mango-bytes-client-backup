@@ -4,8 +4,21 @@ const cartUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
+// gets carts that belongs to the user
+const filterCarts = function (data) {
+  const cartsArray = data.carts
+  let yourCarts = []
+  for (let i = 0; i < cartsArray.length; i++) {
+    if (cartsArray[i]._owner === store.user.id) {
+      yourCarts.push(cartsArray[i])
+    }
+  }
+  return yourCarts
+}
+
 const onGetCarts = function () {
   cartApi.index()
+    .then((data) => filterCarts(data))
     .then(cartUi.onGetCartsSuccess)
     .catch(cartUi.onGetCartsError)
 }
