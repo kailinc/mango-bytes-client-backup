@@ -31,6 +31,18 @@ const filterCart = function (data) {
   return data
 }
 
+// function to delete _id cuz back end picky
+const deleteId = function (data) {
+  for (let i = 0; i < data.products.length; i++) {
+    for (let key in data.products[i]) {
+      if (key === '_id') {
+        delete data.products[i][key]
+      }
+    }
+  }
+  return data
+}
+
 const onGetCartsSuccess = function (data) {
   // console.log(data)
   const modDate = modifyTime(data)
@@ -69,7 +81,10 @@ const onViewCartSuccess = function (data) {
     showCartHTML = showPaidCartTemplate({ cart: data.cart })
   }
   $('#items').append(showCartHTML)
-  frontCart.cart = filterCart(data.cart)
+  data = filterCart(data.cart)
+  data = deleteId(data)
+  // frontCart.cart = filterCart(data.cart)
+  frontCart.cart = data
 }
 
 const onViewCartError = function (error) {
@@ -85,16 +100,14 @@ const onDestroyCartSuccess = function () {
 const onDestroyCartError = function (error) {
   console.log(error)
 }
-//
-// const onLogOutSuccess = function () {
-//   store.user = null
-//   $('.userIn').css('display', 'none')
-//   $('.userOut').css('display', 'block')
-// }
-//
-// const onLogOutError = function (error) {
-//   console.log(error)
-// }
+
+const onUpdateCartSuccess = function (data) {
+  console.log('ui data', data)
+}
+
+const onUpdateCartError = function (error) {
+  console.error(error)
+}
 //
 // const onViewProfileSuccess = function (data) {
 //   $('#main').css('display', 'none')
@@ -126,5 +139,7 @@ module.exports = {
   onViewCartSuccess,
   onViewCartError,
   onDestroyCartSuccess,
-  onDestroyCartError
+  onDestroyCartError,
+  onUpdateCartSuccess,
+  onUpdateCartError
 }

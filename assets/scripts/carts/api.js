@@ -33,24 +33,16 @@ const destroy = function (data) {
   })
 }
 
-// const signIn = function (data) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/sign-in',
-//     method: 'POST',
-//     data
-//   })
-// }
-//
-// const changePwd = function (data) {
-//   return $.ajax({
-//     method: 'PATCH',
-//     url: config.apiOrigin + '/change-password/' + store.user.id,
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     },
-//     data
-//   })
-// }
+const update = function (data, id) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiOrigin + '/carts/' + id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 //
 // const logOut = function () {
 //   return $.ajax({
@@ -78,8 +70,8 @@ const destroy = function (data) {
 module.exports = {
   index,
   show,
-  destroy
-  // logOut,
+  destroy,
+  update
   // changePwd,
   // viewProfile,
   // updateUser

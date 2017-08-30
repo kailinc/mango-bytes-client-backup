@@ -19,19 +19,17 @@ const filterCarts = function (data) {
 
 // function to update cart info in the front end
 const UpdateData = function (data, id, quantity) {
-  console.log('before data', data)
   if (quantity > 0) {
     for (let i = 0; i < data.cart.products.length; i++) {
       for (let key in data.cart.products[i]) {
         if (data.cart.products[i].item === id) {
-          data.cart.products[i].quantity = quantity
+          data.cart.products[i].quantity = parseInt(quantity)
         }
       }
     }
   } else {
     console.log('less than 1')
   }
-  console.log('after data', data)
   return data
 }
 
@@ -59,12 +57,14 @@ const onDeleteCart = function () {
 
 const onUpdateQuantity = function () {
   const quantity = $(this).val()
+  const cartId = $(this).parent().parent().data('id')
   if (quantity > 0) {
     const itemId = $(this).parent().data('item-id')
-    const data = UpdateData(frontCart, itemId, quantity)
-    // cartApi.update(data)
-    //   .then(cartUi.onUpdateCartSuccess)
-    //   .catch(cartUi.onUpdateCartError)
+    let data = UpdateData(frontCart, itemId, quantity)
+    data = JSON.stringify(data)
+    cartApi.update(data, cartId)
+      .then(cartUi.onUpdateCartSuccess)
+      .catch(cartUi.onUpdateCartError)
   }
 }
 
