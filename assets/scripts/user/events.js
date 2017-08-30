@@ -6,16 +6,32 @@ const store = require('../store')
 
 const onSignUp = function (e) {
   e.preventDefault()
+  const email = $('#email').val()
   const pwd = $('#pwd').val()
   const pwdConfirm = $('#pwdConfirm').val()
   if (pwd === pwdConfirm) {
     const data = getFormFields(e.target)
+    let userCred = {
+      credentials: {
+        email: email,
+        password: pwd
+      }
+    }
+    userCred = JSON.stringify(userCred)
+    console.log(userCred)
     userApi.create(data)
       .then(userUi.onSignUpSuccess)
       .catch(userUi.onSignUpError)
+      .then((userCred) => autoSignIn(data))
   } else {
     $('#signUpMsg').text('Password and Password Confirmation must match!')
   }
+}
+
+const autoSignIn = function (data) {
+  userApi.signIn(data)
+    .then(userUi.onSignInSuccess)
+    .catch(userUi.onSignInError)
 }
 
 const onSignIn = function (e) {
