@@ -8,9 +8,15 @@
       <hr>
       <div class="col-sm-8">
         {{#each cart.products as |product|}}
-          <h4>{{product.id}}</h4>
-          <p>${{product.price}}</p>
-          <p>Quantity: {{product.quantity}}</p>
+          <div class="col-sm-6">
+            <img src="{{product.img}}" style="height: 150px; margin-bottom: 60px;">
+          </div>
+          <div class="col-sm-6" style="height: 200px; margin-bottom: 10px;">
+            <p>{{product.name}}</p>
+            <p>${{product.basePrice}} per</p>
+            <p>DevCred: {{product.devCred}} per</p>
+            <p>Quantity: {{product.quantity}} </p>
+          </div>
         {{/each}}
 
       </div>
