@@ -1,6 +1,6 @@
 'use strict'
 
-const store = {
+const cart = {
 }
 
-module.exports = store
+module.exports = cart
