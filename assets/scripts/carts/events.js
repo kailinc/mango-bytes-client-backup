@@ -3,6 +3,7 @@ const cartApi = require('./api.js')
 const cartUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
+const frontCart = require('../frontCart')
 
 // gets carts that belongs to the user
 const filterCarts = function (data) {
@@ -14,6 +15,24 @@ const filterCarts = function (data) {
     }
   }
   return yourCarts
+}
+
+// function to update cart info in the front end
+const UpdateData = function (data, id, quantity) {
+  console.log('before data', data)
+  if (quantity > 0) {
+    for (let i = 0; i < data.cart.products.length; i++) {
+      for (let key in data.cart.products[i]) {
+        if (data.cart.products[i].item === id) {
+          data.cart.products[i].quantity = quantity
+        }
+      }
+    }
+  } else {
+    console.log('less than 1')
+  }
+  console.log('after data', data)
+  return data
 }
 
 const onGetCarts = function () {
@@ -39,7 +58,14 @@ const onDeleteCart = function () {
 }
 
 const onUpdateQuantity = function () {
-
+  const quantity = $(this).val()
+  if (quantity > 0) {
+    const itemId = $(this).parent().data('item-id')
+    const data = UpdateData(frontCart, itemId, quantity)
+    // cartApi.update(data)
+    //   .then(cartUi.onUpdateCartSuccess)
+    //   .catch(cartUi.onUpdateCartError)
+  }
 }
 
 // const onChangePwd = function (e) {
@@ -63,7 +89,7 @@ const addHandlers = () => {
   $('#cartBtn').on('click', onGetCarts)
   $('#items').on('click', '.viewCartBtn', onViewCart)
   $('#items').on('click', '.clearCartBtn', onDeleteCart)
-  $('#items').on('keydown', '.itemQuantity', onUpdateQuantity)
+  $('#items').on('change', '.itemQuantity', onUpdateQuantity)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwdForm').on('submit', onChangePwd)
   // $('#viewProfileBtn').on('click', onViewProfile)
