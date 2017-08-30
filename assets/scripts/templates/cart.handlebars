@@ -8,9 +8,27 @@
       <hr>
       <div class="col-sm-8">
         {{#each cart.products as |product|}}
-          <h4>{{product.id}}</h4>
-          <p>${{product.price}}</p>
-          <p>Quantity: {{product.quantity}}</p>
+          <div class="col-sm-6">
+            <img src="{{product.img}}" style="height: 150px; margin-bottom: 60px;">
+          </div>
+          <div class="col-sm-6" style="height: 200px; margin-bottom: 10px;">
+            <p>{{product.name}}</p>
+            <p>${{product.basePrice}} per</p>
+            <p>DevCred: {{product.devCred}} per</p>
+            <form class="itemForm form-horizontal">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Quantity</label>
+                  <div class="col-sm-7">
+                    <input type="number" class="form-control" value="{{product.quantity}}">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-10">
+                    <button type="submit" class="btn btn-default">Save</button>
+                  </div>
+                </div>
+            </form>
+          </div>
         {{/each}}
 
       </div>
