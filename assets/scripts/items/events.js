@@ -8,6 +8,12 @@ const addToPOJO = function (data) {
 
 }
 
+const viewAll = function () {
+  itemApi.index()
+    .then(itemUi.onIndexItemSuccess)
+    .catch(itemUi.onIndexItemError)
+}
+
 const onViewItem = function () {
   const itemId = $(this).parent().data('id')
   itemApi.show(itemId)
@@ -19,6 +25,7 @@ const onAddToCart = function (e) {
   const itemId = $(this).parent().parent().data('id')
   const quantity = $(this).parent().parent().data('quantity')
   const data = {item_id: itemId, quantity: quantity}
+  addtoPOJO(data)
   // itemApi.show(itemId)
   //   .then(itemUi.onViewItemSuccess)
   //   .catch(itemUi.onViewItemError)
