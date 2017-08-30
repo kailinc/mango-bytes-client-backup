@@ -25,10 +25,13 @@ const onAddToCart = function (e) {
   const data = {item_id: itemId, quantity: quantity}
   currentCart.cart.products.push(data)
   if (currentCart.cart.products.length === 1) {
+    console.log('adding to cart')
     // console.log(currentCart)
     cartEvent.onCreateCart(currentCart)
   } else {
-    // console.log('updating a cart')
+    console.log('updating a cart')
+    // console.log(store.cartId)
+    cartEvent.onUpdateCart(currentCart, store.cartId)
   }
 }
 

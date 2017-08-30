@@ -86,6 +86,7 @@ const initCurrentCart = function () {
 const setCurrentCart = function (data) {
   let cart = filterPaid(data)
   if (cart) {
+    store.cartId = cart.id
     currentCart.cart.products = cart.products
     cleanCart()
   }

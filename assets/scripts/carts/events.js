@@ -89,6 +89,12 @@ const onCreateCart = function (data) {
     .catch(cartUi.onCreateCartError)
 }
 
+const onUpdateCart = function (data, id) {
+  cartApi.update(data, id)
+    .then(cartUi.onUpdateCartSuccess)
+    .catch(cartUi.onUpdateCartError)
+}
+
 const addHandlers = () => {
   $('#cartBtn').on('click', onGetCarts)
   $('#items').on('click', '.viewCartBtn', onViewCart)
@@ -101,5 +107,6 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
   filterCarts,
-  onCreateCart
+  onCreateCart,
+  onUpdateCart
 }

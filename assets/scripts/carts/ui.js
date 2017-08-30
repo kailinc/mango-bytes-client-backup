@@ -103,6 +103,7 @@ const onDestroyCartError = function (error) {
 
 const onUpdateCartSuccess = function (data) {
   console.log('ui data', data)
+  console.log('cart is updated', data)
 }
 
 const onUpdateCartError = function (error) {
@@ -111,7 +112,7 @@ const onUpdateCartError = function (error) {
 
 const onCreateCartSuccess = function (data) {
   console.log(data)
-  console.lo
+  console.log('your cart is created')
 }
 
 const onCreateCartError = function (error) {
