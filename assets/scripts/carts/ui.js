@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const frontCart = require('../frontCart')
 const showCartsTemplate = require('../templates/carts.handlebars')
 const showCartTemplate = require('../templates/cart.handlebars')
 const showPaidCartTemplate = require('../templates/paid-cart.handlebars')
@@ -61,7 +62,10 @@ const onViewCartSuccess = function (data) {
     showCartHTML = showPaidCartTemplate({ cart: data.cart })
   }
   $('#items').append(showCartHTML)
-  console.log(data)
+  frontCart.cart = data.cart
+  console.log('this is frontCart', frontCart.cart)
+  console.log('hello')
+  console.log('this is data.cart', data.cart)
 }
 
 const onViewCartError = function (error) {
