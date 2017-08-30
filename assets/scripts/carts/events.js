@@ -38,6 +38,10 @@ const onDeleteCart = function () {
     .catch(cartUi.onDestroyCartError)
 }
 
+const onUpdateQuantity = function () {
+
+}
+
 // const onChangePwd = function (e) {
 //   e.preventDefault()
 //   const data = getFormFields(e.target)
@@ -54,18 +58,12 @@ const onDeleteCart = function () {
 //     .catch(userUi.onViewProfileError)
 // }
 //
-// const onUpdateProfile = function (e) {
-//   e.preventDefault()
-//   const data = getFormFields(e.target)
-//   userApi.updateUser(data)
-//     .then(userUi.onUpdateProfileSuccess)
-//     .catch(userUi.onUpdateProfileError)
-// }
 
 const addHandlers = () => {
   $('#cartBtn').on('click', onGetCarts)
   $('#items').on('click', '.viewCartBtn', onViewCart)
   $('#items').on('click', '.clearCartBtn', onDeleteCart)
+  $('#items').on('keydown', '.itemQuantity', onUpdateQuantity)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwdForm').on('submit', onChangePwd)
   // $('#viewProfileBtn').on('click', onViewProfile)

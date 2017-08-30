@@ -61,6 +61,7 @@ const onViewCartSuccess = function (data) {
     showCartHTML = showPaidCartTemplate({ cart: data.cart })
   }
   $('#items').append(showCartHTML)
+  console.log(data)
 }
 
 const onViewCartError = function (error) {
