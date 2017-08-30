@@ -2,7 +2,7 @@
 
 const currentCart = {
   cart: {
-    products: [{}]
+    products: []
   }
 }
 

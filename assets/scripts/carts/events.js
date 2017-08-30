@@ -82,8 +82,8 @@ const onDeleteItem = function () {
     .catch(cartUi.onUpdateCartError)
 }
 
-const onCreateCart = function () {
-  let data = frontCart
+const onCreateCart = function (data) {
+  // data = JSON.stringify(data)
   cartApi.create(data)
     .then(cartUi.onCreateCartSuccess)
     .catch(cartUi.onCreateCartError)
@@ -100,5 +100,6 @@ const addHandlers = () => {
 
 module.exports = {
   addHandlers,
-  filterCarts
+  filterCarts,
+  onCreateCart
 }

@@ -1,12 +1,10 @@
 'use strict'
 const itemApi = require('./api.js')
+const cartEvent = require('../carts/events.js')
 const itemUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
-
-const addToPOJO = function (data) {
-
-}
+const currentCart = require('../currentCart')
 
 const viewAll = function () {
   itemApi.index()
@@ -25,10 +23,13 @@ const onAddToCart = function (e) {
   const itemId = $(this).parent().parent().data('id')
   const quantity = $(this).parent().parent().data('quantity')
   const data = {item_id: itemId, quantity: quantity}
-  addtoPOJO(data)
-  // itemApi.show(itemId)
-  //   .then(itemUi.onViewItemSuccess)
-  //   .catch(itemUi.onViewItemError)
+  currentCart.cart.products.push(data)
+  if (currentCart.cart.products.length === 1) {
+    // console.log(currentCart)
+    cartEvent.onCreateCart(currentCart)
+  } else {
+    // console.log('updating a cart')
+  }
 }
 
 // const onLogOut = function () {

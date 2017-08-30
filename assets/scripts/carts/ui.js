@@ -111,6 +111,7 @@ const onUpdateCartError = function (error) {
 
 const onCreateCartSuccess = function (data) {
   console.log(data)
+  console.lo
 }
 
 const onCreateCartError = function (error) {

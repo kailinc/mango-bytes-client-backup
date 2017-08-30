@@ -14,10 +14,12 @@ const index = function (data) {
 }
 
 const create = function (data) {
+  console.log(data)
   return $.ajax({
     method: 'POST',
     url: config.apiOrigin + '/carts',
     headers: {
+      contentType: 'application/json',
       Authorization: 'Token token=' + store.user.token
     },
     data
