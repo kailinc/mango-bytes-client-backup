@@ -18,10 +18,17 @@ const filterDate = function (date) {
   return date.split('T')[0]
 }
 
-const sortData = function (data) {
-  data.sort(function () {
-
-  })
+// function to filter cart data
+// only have products attribute
+const filterCart = function (data) {
+  for (let key in data) {
+    // skip loop if the property is from prototype
+    if (!data.hasOwnProperty(key)) continue
+    if (key !== 'products') {
+      delete data[key]
+    }
+  }
+  return data
 }
 
 const onGetCartsSuccess = function (data) {
@@ -62,10 +69,7 @@ const onViewCartSuccess = function (data) {
     showCartHTML = showPaidCartTemplate({ cart: data.cart })
   }
   $('#items').append(showCartHTML)
-  frontCart.cart = data.cart
-  console.log('this is frontCart', frontCart.cart)
-  console.log('hello')
-  console.log('this is data.cart', data.cart)
+  frontCart.cart = filterCart(data.cart)
 }
 
 const onViewCartError = function (error) {
