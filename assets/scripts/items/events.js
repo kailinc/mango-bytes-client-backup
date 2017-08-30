@@ -4,10 +4,8 @@ const itemUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
-const viewAll = function () {
-  itemApi.index()
-    .then(itemUi.onIndexItemSuccess)
-    .catch(itemUi.onIndexItemError)
+const addToPOJO = function (data) {
+
 }
 
 const onViewItem = function () {
@@ -16,7 +14,16 @@ const onViewItem = function () {
     .then(itemUi.onViewItemSuccess)
     .catch(itemUi.onViewItemError)
 }
-//
+
+const onAddToCart = function (e) {
+  const itemId = $(this).parent().parent().data('id')
+  const quantity = $(this).parent().parent().data('quantity')
+  const data = {item_id: itemId, quantity: quantity}
+  // itemApi.show(itemId)
+  //   .then(itemUi.onViewItemSuccess)
+  //   .catch(itemUi.onViewItemError)
+}
+
 // const onLogOut = function () {
 //   userApi.logOut()
 //     .then(userUi.onLogOutSuccess)
@@ -50,6 +57,7 @@ const onViewItem = function () {
 const addHandlers = () => {
   $('#allBtn').on('click', viewAll)
   $('#items').on('click', '.viewItemBtn', onViewItem)
+  $('#items').on('click', '.addCartBtn', onAddToCart)
   // $('#logOutBtn').on('click', onLogOut)
   // $('#changePwdForm').on('submit', onChangePwd)
   // $('#viewProfileBtn').on('click', onViewProfile)
