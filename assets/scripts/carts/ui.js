@@ -40,6 +40,7 @@ const onGetCartsSuccess = function (data) {
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
+  console.log(modDate)
   const showCartsHTML = showCartsTemplate({ carts: modDate })
   $('#items').append(showCartsHTML)
 }

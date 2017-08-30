@@ -9,16 +9,22 @@
       <hr>
       <div class="col-sm-8">
         {{#each cart.products as |product|}}
-          <h4>{{product.id}}</h4>
-          <p>${{product.price}}</p>
-          <p>Quantity: {{product.quantity}}</p>
+          <div class="col-sm-6">
+            <img src="{{product.img}}" style="height: 150px; margin-bottom: 10px;">
+          </div>
+          <div class="col-sm-6" style="height: 150px; margin-bottom: 10px;">
+            <p>{{product.name}}</p>
+            <p>${{product.basePrice}} per unit</p>
+            <p>Quantity: {{product.quantity}}</p>
+            <p>DevCred: {{product.devCred}} per unit</p>
+          </div>
         {{/each}}
 
       </div>
 
       <div class="col-sm-4" data-id={{cart._id}}>
-        <h4>${{cart.totalPrice}}</h4>
-        <h4>DevCred: {{cart.totalDevCred}}</h4>
+        <h4>Total Price: ${{cart.totalPrice}}</h4>
+        <h4>Total DevCred: {{cart.totalDevCred}}</h4>
         <h4>Paid: {{cart.isPaid}}</h4>
         <button class="btn btn-default viewCartBtn">View</button>
       </div>
