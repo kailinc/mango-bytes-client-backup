@@ -4,6 +4,7 @@ const store = require('../store')
 const showUserProfileTemplate = require('../templates/user-profile.handlebars')
 
 const onSignUpSuccess = function (data) {
+  console.log(data)
   $('#signUpForm').get(0).reset()
   $('#signUpMsg').text(' ')
   $('#signUpModal').modal('hide')

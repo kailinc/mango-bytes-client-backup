@@ -5,6 +5,7 @@ const config = require('../config.js')
 const create = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
+    // url: 'http://httpbin.org/post',
     method: 'POST',
     data
   })

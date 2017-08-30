@@ -13,6 +13,17 @@ const index = function (data) {
   })
 }
 
+const create = function (data) {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiOrigin + '/carts',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const show = function (data) {
   return $.ajax({
     method: 'GET',
@@ -35,14 +46,15 @@ const destroy = function (data) {
 
 const update = function (data, id) {
   return $.ajax({
-    method: 'PATCH',
     url: config.apiOrigin + '/carts/' + id,
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     data
   })
 }
+
 //
 // const logOut = function () {
 //   return $.ajax({
@@ -71,7 +83,8 @@ module.exports = {
   index,
   show,
   destroy,
-  update
+  update,
+  create
   // changePwd,
   // viewProfile,
   // updateUser

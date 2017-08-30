@@ -28,7 +28,11 @@ const UpdateData = function (data, id, quantity) {
       }
     }
   } else {
-    console.log('less than 1')
+    for (let i = 0; i < data.cart.products.length; i++) {
+      if (data.cart.products[i].item_id === id) {
+        data.cart.products.splice(i, 1)
+      }
+    }
   }
   return data
 }
@@ -67,32 +71,31 @@ const onUpdateQuantity = function () {
       .catch(cartUi.onUpdateCartError)
   }
 }
+const onDeleteItem = function () {
+  const itemId = $(this).parent().data('item-id')
+  const cartId = $(this).parent().parent().data('id')
+  let data = UpdateData(frontCart, itemId, 0)
+  data = JSON.stringify(data)
+  console.log(data)
+  cartApi.update(data, cartId)
+    .then(cartUi.onUpdateCartSuccess)
+    .catch(cartUi.onUpdateCartError)
+}
 
-// const onChangePwd = function (e) {
-//   e.preventDefault()
-//   const data = getFormFields(e.target)
-//   userApi.changePwd(data)
-//     .then(userUi.onChangePwdSuccess)
-//     .catch(userUi.onChangePwdError)
-// }
-//
-// const onViewProfile = function (e) {
-//   e.preventDefault()
-//   const data = store.user.id
-//   userApi.viewProfile(data)
-//     .then(userUi.onViewProfileSuccess)
-//     .catch(userUi.onViewProfileError)
-// }
-//
+const onCreateCart = function () {
+  let data = frontCart
+  cartApi.create(data)
+    .then(cartUi.onCreateCartSuccess)
+    .catch(cartUi.onCreateCartError)
+}
 
 const addHandlers = () => {
   $('#cartBtn').on('click', onGetCarts)
   $('#items').on('click', '.viewCartBtn', onViewCart)
   $('#items').on('click', '.clearCartBtn', onDeleteCart)
   $('#items').on('change', '.itemQuantity', onUpdateQuantity)
-  // $('#logOutBtn').on('click', onLogOut)
-  // $('#changePwdForm').on('submit', onChangePwd)
-  // $('#viewProfileBtn').on('click', onViewProfile)
+  $('#items').on('click', '.deleteItemBtn', onDeleteItem)
+  $('.createCartBtn').on('click', onCreateCart)
 }
 
 module.exports = {

@@ -35,7 +35,7 @@ const filterCart = function (data) {
 const deleteId = function (data) {
   for (let i = 0; i < data.products.length; i++) {
     for (let key in data.products[i]) {
-      if (key === '_id') {
+      if (key === '_id' || key === 'id') {
         delete data.products[i][key]
       }
     }
@@ -106,9 +106,17 @@ const onUpdateCartSuccess = function (data) {
 }
 
 const onUpdateCartError = function (error) {
-  console.error(error)
+  console.log(error)
 }
-//
+
+const onCreateCartSuccess = function (data) {
+  console.log(data)
+}
+
+const onCreateCartError = function (error) {
+  console.log(error)
+}
+
 // const onViewProfileSuccess = function (data) {
 //   $('#main').css('display', 'none')
 //   $('#userProfile').css('display', 'block')
@@ -141,5 +149,7 @@ module.exports = {
   onDestroyCartSuccess,
   onDestroyCartError,
   onUpdateCartSuccess,
-  onUpdateCartError
+  onUpdateCartError,
+  onCreateCartSuccess,
+  onCreateCartError
 }

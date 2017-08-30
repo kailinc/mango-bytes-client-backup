@@ -11,12 +11,13 @@
           <div class="col-sm-6">
             <img src="{{product.img}}" style="height: 150px; margin-bottom: 60px;">
           </div>
-          <div class="col-sm-6" style="height: 200px; margin-bottom: 10px;" data-item-id={{product.item}}>
+          <div class="col-sm-6" style="height: 200px; margin-bottom: 10px;" data-item-id={{product.item_id}}>
             <p>{{product.name}}</p>
             <p>${{product.basePrice}} per</p>
             <p>DevCred: {{product.devCred}} per</p>
             <p>Quantity: {{product.quantity}}</p>
             <!-- <input type="number" class="itemQuantity" value=""> -->
+            <button class="btn btn-default deleteItemBtn">Delete Item</button>
           </div>
         {{/each}}
 
@@ -26,7 +27,6 @@
         <h4>DevCred: {{cart.totalDevCred}}</h4>
         <h4>Paid: {{cart.isPaid}}</h4>
         <button class="btn btn-default clearCartBtn">Clear Cart</button>
-        <button class="btn btn-default checkOutBtn">Check Out</button>
       </div>
     </div>
     <hr>
