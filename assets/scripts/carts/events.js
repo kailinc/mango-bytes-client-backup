@@ -1,9 +1,11 @@
 'use strict'
 const cartApi = require('./api.js')
+const itemApi = require('../items/api.js')
 const cartUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 const frontCart = require('../frontCart')
+const cartInfo = require('../cartInfo')
 
 // gets carts that belongs to the user
 const filterCarts = function (data) {
@@ -37,6 +39,15 @@ const UpdateData = function (data, id, quantity) {
   return data
 }
 
+const getItems = function () {
+  for (let i = 0; i < frontCart.cart.products.length; i++) {
+    const itemId = (frontCart.cart.products[i].item_id)
+    itemApi.show(itemId)
+      .then((data) => cartInfo.items.push(data))
+      .catch((error) => console.log(error))
+  }
+}
+
 const onGetCarts = function () {
   cartApi.index()
     .then((data) => filterCarts(data))
@@ -48,6 +59,7 @@ const onViewCart = function () {
   const data = $(this).parent().data('id')
   cartApi.show(data)
     .then(cartUi.onViewCartSuccess)
+    .then(() => getItems())
     .catch(cartUi.onViewCartError)
 }
 

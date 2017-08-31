@@ -15,7 +15,7 @@ const onIndexItemError = function (error) {
 }
 
 const onViewItemSuccess = function (data) {
-  console.log(data)
+  console.log('data from viewing a single item', data)
   $('#items').empty()
   const showItemHTML = showItemTemplate({ item: data.item })
   $('#items').append(showItemHTML)

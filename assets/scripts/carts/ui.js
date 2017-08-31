@@ -72,6 +72,7 @@ const onGetCartsError = function (error) {
 }
 
 const onViewCartSuccess = function (data) {
+  // console.log('data of view cart success is ', data)
   let showCartHTML = ''
   data.cart.updatedAt = filterDate(data.cart.updatedAt)
   $('#userProfile').css('display', 'none')
@@ -87,6 +88,7 @@ const onViewCartSuccess = function (data) {
   data = deleteId(data)
   // frontCart.cart = filterCart(data.cart)
   frontCart.cart = data
+  // console.log('data of front cart from view cart success is ', frontCart)
 }
 
 const onViewCartError = function (error) {
