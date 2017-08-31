@@ -47,3 +47,12 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .grid {
   margin: 10px 0;
 }
+
+#firstJumbo {
+  margin-bottom: 0px;
+  background-image: url('/assets/img/landing.png');
+  background-position: 50% 75%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
