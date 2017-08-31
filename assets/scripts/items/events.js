@@ -8,6 +8,7 @@ const currentCart = require('../currentCart')
 
 const viewAll = function () {
   $('#firstJumbo').css('display', 'none')
+  $('#userProfile').css('display', 'none')
   itemApi.index()
     .then(itemUi.onIndexItemSuccess)
     .catch(itemUi.onIndexItemError)
