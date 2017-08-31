@@ -71,19 +71,9 @@ const onGetCartsError = function (error) {
   console.log(error)
 }
 
-const onViewCartSuccess = function (data) {
+const onGetCartSuccess = function (data) {
   // console.log('data of view cart success is ', data)
-  let showCartHTML = ''
   data.cart.updatedAt = filterDate(data.cart.updatedAt)
-  $('#userProfile').css('display', 'none')
-  $('#firstJumbo').css('display', 'none')
-  $('#items').empty()
-  if (data.cart.isPaid === false) {
-    showCartHTML = showCartTemplate({ cart: data.cart })
-  } else {
-    showCartHTML = showPaidCartTemplate({ cart: data.cart })
-  }
-  $('#items').append(showCartHTML)
   data = filterCart(data.cart)
   data = deleteId(data)
   // frontCart.cart = filterCart(data.cart)
@@ -91,7 +81,7 @@ const onViewCartSuccess = function (data) {
   // console.log('data of front cart from view cart success is ', frontCart)
 }
 
-const onViewCartError = function (error) {
+const onGetCartError = function (error) {
   console.log(error)
 }
 
@@ -101,6 +91,21 @@ const onDestroyCartSuccess = function () {
   $('#items').empty()
   currentCart.cart.products = []
   console.log('current cart from ondestroy cart is ', currentCart)
+}
+
+const onViewCartSuccess = function () {
+  console.log('at onview cart success function')
+  const data = frontCart
+  let showCartHTML = ''
+  $('#userProfile').css('display', 'none')
+  $('#firstJumbo').css('display', 'none')
+  if (data.cart.isPaid === false) {
+    showCartHTML = showCartTemplate({ cart: data.cart })
+  } else {
+    showCartHTML = showPaidCartTemplate({ cart: data.cart })
+  }
+  $('#items').empty()
+  $('#items').append(showCartHTML)
 }
 
 const onDestroyCartError = function (error) {
@@ -138,12 +143,13 @@ const cleanCart = function () {
 module.exports = {
   onGetCartsSuccess,
   onGetCartsError,
-  onViewCartSuccess,
-  onViewCartError,
+  onGetCartSuccess,
+  onGetCartError,
   onDestroyCartSuccess,
   onDestroyCartError,
   onUpdateCartSuccess,
   onUpdateCartError,
   onCreateCartSuccess,
-  onCreateCartError
+  onCreateCartError,
+  onViewCartSuccess
 }

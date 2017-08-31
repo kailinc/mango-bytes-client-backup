@@ -58,13 +58,13 @@ const onGetCarts = function () {
 }
 
 const onViewCart = function () {
-  frontCart.cart.fullItem = []
   const data = $(this).parent().data('id')
   cartApi.show(data)
-    .then(cartUi.onViewCartSuccess)
+    .then(cartUi.onGetCartSuccess)
     .then(() => getItems())
+    .then(cartUi.onViewCartSuccess)
     // .then(() => console.log('front cart data is after getItems() ', frontCart.cart))
-    .catch(cartUi.onViewCartError)
+    .catch(cartUi.onGetCartError)
 }
 
 const onDeleteCart = function () {
