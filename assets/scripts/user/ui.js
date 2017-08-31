@@ -8,7 +8,7 @@ const onSignUpSuccess = function (data) {
   $('#signUpForm').get(0).reset()
   $('#signUpMsg').text(' ')
   $('#signUpModal').modal('hide')
-  $('#alertSuccess').css('display', 'block').text('Well Done! You are signed in!')
+  $('#alertSuccess').css('display', 'block').text('Well Done! You are signed Up! Sign In to continue')
   $('#signUpError').css('display', 'none')
 }
 
@@ -24,6 +24,8 @@ const onSignInSuccess = function (data) {
   $('#signInModal').modal('hide')
   $('.userIn').css('display', 'block')
   $('.userOut').css('display', 'none')
+  $('#alertSuccess').css('display', 'block').text('You are signed in!')
+  $('#alertDanger').css('display', 'none')
 }
 
 const onSignInError = function (error) {
@@ -50,6 +52,8 @@ const onLogOutSuccess = function () {
   store.user = null
   $('.userIn').css('display', 'none')
   $('.userOut').css('display', 'block')
+  $('#alertSuccess').css('display', 'block').text('You are signed out!')
+  $('#signUpError').css('display', 'none')
 }
 
 const onLogOutError = function (error) {

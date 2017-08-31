@@ -51,6 +51,7 @@ const getItems = function () {
 }
 
 const onGetCarts = function () {
+  $('#firstJumbo').css('display', 'none')
   cartApi.index()
     .then((data) => filterCarts(data))
     .then(cartUi.onGetCartsSuccess)

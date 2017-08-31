@@ -89,6 +89,8 @@ const onGetCartError = function (error) {
 const onDestroyCartSuccess = function () {
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
+  $('#alertSuccess').css('display', 'block').text('You have cleared the cart.')
+  $('#signUpError').css('display', 'none')
   $('#items').empty()
   currentCart.cart.products = []
   console.log('current cart from ondestroy cart is ', currentCart)
