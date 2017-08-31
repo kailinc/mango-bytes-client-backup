@@ -1,6 +1,8 @@
 'use strict'
 const store = require('../store')
 const frontCart = require('../frontCart')
+const currentCart = require('../currentCart')
+const userEvent = require('../user/events')
 const showCartsTemplate = require('../templates/carts.handlebars')
 const showCartTemplate = require('../templates/cart.handlebars')
 const showPaidCartTemplate = require('../templates/paid-cart.handlebars')
@@ -95,6 +97,7 @@ const onDestroyCartSuccess = function () {
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
+  console.log('current cart from ondestroy cart is ', currentCart)
 }
 
 const onDestroyCartError = function (error) {
@@ -111,39 +114,23 @@ const onUpdateCartError = function (error) {
 }
 
 const onCreateCartSuccess = function (data) {
-  console.log('cart data is', data)
-  console.log('your cart is created')
+  // console.log('cart is created, the data is', data.cart.products)
   store.cartId = data.cart.id
-  console.log('store cart id is', store)
+  currentCart.cart.products = data.cart.products
+  cleanCart()
+  console.log('current cart is, after cleaning it', currentCart)
 }
 
 const onCreateCartError = function (error) {
   console.log(error)
 }
 
-// const onViewProfileSuccess = function (data) {
-//   $('#main').css('display', 'none')
-//   $('#userProfile').css('display', 'block')
-//   $('#userInfo').empty()
-//   const showUserProfileHTML = showUserProfileTemplate({ user: data.user })
-//   $('#userInfo').append(showUserProfileHTML)
-//   console.log(data)
-// }
-//
-// const onViewProfileError = function (error) {
-//   console.log(error)
-// }
-//
-// const onUpdateProfileSuccess = function () {
-//   $('#alertSuccess').css('display', 'block').text('Well Done! You have updated your profile!')
-//   $('#alertDanger').css('display', 'none')
-// }
-//
-// const onUpdateProfileError = function (error) {
-//   console.log(error)
-//   $('#alertDanger').css('display', 'block').text('Sorry, there was a problem with updating your profile.')
-//   $('#alertSuccess').css('display', 'none')
-// }
+const cleanCart = function () {
+  for (let i = 0; i < currentCart.cart.products.length; i++) {
+    delete currentCart.cart.products[i]['id']
+    delete currentCart.cart.products[i]['_id']
+  }
+}
 
 module.exports = {
   onGetCartsSuccess,
