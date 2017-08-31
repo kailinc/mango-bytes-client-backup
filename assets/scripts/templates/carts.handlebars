@@ -1,34 +1,19 @@
-<div class="row">
-  <h1>Your Transaction History</h1>
+
+<h1>Your Transaction History</h1>
+<hr>
   {{#each carts as |cart|}}
-  <hr>
-    <div class="col-sm-12 carts">
-      <hr>
-      <p>{{cart.updatedAt}}</p>
-      <p>Order#: {{cart._id}}</p>
-      <hr>
-      <div class="col-sm-8">
-        {{#each cart.products as |product|}}
-          <div class="col-sm-6">
-            <img src="{{product.img}}" style="height: 150px; margin-bottom: 10px;">
-          </div>
-          <div class="col-sm-6" style="height: 150px; margin-bottom: 10px;">
-            <p>{{product.name}}</p>
-            <p>${{product.basePrice}} per unit</p>
-            <p>Quantity: {{product.quantity}}</p>
-            <p>DevCred: {{product.devCred}} per unit</p>
-          </div>
-        {{/each}}
-
+    <div class="row grid">
+      <div class="col-sm-5 carts">
+        <p>Order#: {{cart._id}}</p>
       </div>
-
-      <div class="col-sm-4" data-id={{cart._id}}>
-        <h4>Total Price: ${{cart.totalPrice}}</h4>
-        <h4>Total DevCred: {{cart.totalDevCred}}</h4>
-        <h4>Paid: {{cart.isPaid}}</h4>
+      <div class="col-sm-3 carts">
+        <p>Date: {{cart.updatedAt}}</p>
+      </div>
+      <div class="col-sm-2 carts">
+        <p>Paid: {{cart.isPaid}}</p>
+      </div>
+      <div class="col-sm-1 carts" data-id={{cart._id}}>
         <button class="btn btn-default viewCartBtn">View</button>
       </div>
     </div>
-    <hr>
   {{/each}}
-</div>
