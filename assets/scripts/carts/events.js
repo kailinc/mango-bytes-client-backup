@@ -56,10 +56,13 @@ const onGetCarts = function () {
 }
 
 const onViewCart = function () {
+  cartInfo.items = []
+  console.log('view cart before init is ', cartInfo)
   const data = $(this).parent().data('id')
   cartApi.show(data)
     .then(cartUi.onViewCartSuccess)
     .then(() => getItems())
+    .then(() => console.log('after view cart cartInfo is ', cartInfo))
     .catch(cartUi.onViewCartError)
 }
 
