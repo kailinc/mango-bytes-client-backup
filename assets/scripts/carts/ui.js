@@ -6,6 +6,8 @@ const userEvent = require('../user/events')
 const showCartsTemplate = require('../templates/carts.handlebars')
 const showCartTemplate = require('../templates/cart.handlebars')
 const showPaidCartTemplate = require('../templates/paid-cart.handlebars')
+const showPaidSideCartTemplate = require('../templates/paid-side-cart.handlebars')
+const showUnpaidSideCartTemplate = require('../templates/unpaid-side-cart.handlebars')
 
 // function to loop through data to change date formate with filterDate()
 const modifyTime = function (data) {
@@ -72,13 +74,13 @@ const onGetCartsError = function (error) {
 }
 
 const onGetCartSuccess = function (data) {
-  // console.log('data of view cart success is ', data)
+  console.log('data of get cart success is ', data)
   data.cart.updatedAt = filterDate(data.cart.updatedAt)
   data = filterCart(data.cart)
   data = deleteId(data)
   // frontCart.cart = filterCart(data.cart)
   frontCart.cart = data
-  // console.log('data of front cart from view cart success is ', frontCart)
+  console.log('data of front cart from view cart success is ', frontCart)
 }
 
 const onGetCartError = function (error) {
@@ -94,7 +96,6 @@ const onDestroyCartSuccess = function () {
 }
 
 const onViewCartSuccess = function () {
-  console.log('at onview cart success function')
   const data = frontCart
   let showCartHTML = ''
   $('#userProfile').css('display', 'none')
@@ -140,6 +141,20 @@ const cleanCart = function () {
   }
 }
 
+const renderPaidSide = function (status, id) {
+  const data = {status, id}
+  $('#userProf').empty()
+  const showPaidSideCartTemplateHTML = showPaidSideCartTemplate({ data: data })
+  $('#userProf').append(showPaidSideCartTemplateHTML)
+}
+
+const renderUnpaidSide = function (status, id) {
+  const data = {status, id}
+  $('#userProf').empty()
+  const showUnpaidSideCartTemplateHTML = showUnpaidSideCartTemplate({ data: data })
+  $('#userProf').append(showUnpaidSideCartTemplateHTML)
+}
+
 module.exports = {
   onGetCartsSuccess,
   onGetCartsError,
@@ -151,5 +166,7 @@ module.exports = {
   onUpdateCartError,
   onCreateCartSuccess,
   onCreateCartError,
-  onViewCartSuccess
+  onViewCartSuccess,
+  renderPaidSide,
+  renderUnpaidSide
 }

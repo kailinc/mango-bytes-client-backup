@@ -59,11 +59,16 @@ const onGetCarts = function () {
 
 const onViewCart = function () {
   const data = $(this).parent().data('id')
+  const paymentStatus = $(this).parent().data('paid')
+  if (paymentStatus) {
+    cartUi.renderPaidSide(paymentStatus, data)
+  } else {
+    cartUi.renderUnpaidSide(paymentStatus, data)
+  }
   cartApi.show(data)
     .then(cartUi.onGetCartSuccess)
     .then(() => getItems())
     .then(cartUi.onViewCartSuccess)
-    // .then(() => console.log('front cart data is after getItems() ', frontCart.cart))
     .catch(cartUi.onGetCartError)
 }
 
