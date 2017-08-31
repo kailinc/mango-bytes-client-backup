@@ -73,7 +73,7 @@ const onViewCart = function () {
 }
 
 const onDeleteCart = function () {
-  const data = $(this).parent().data('id')
+  const data = $(this).data('id')
   cartApi.destroy(data)
     .then(cartUi.onDestroyCartSuccess)
     .then(onGetCarts)
@@ -119,7 +119,7 @@ const onUpdateCart = function (data, id) {
 const addHandlers = () => {
   $('#cartBtn').on('click', onGetCarts)
   $('#items').on('click', '.viewCartBtn', onViewCart)
-  $('#items').on('click', '.clearCartBtn', onDeleteCart)
+  $('#userProf').on('click', '.clearCartBtn', onDeleteCart)
   $('#items').on('change', '.itemQuantity', onUpdateQuantity)
   $('#items').on('click', '.deleteItemBtn', onDeleteItem)
   $('.createCartBtn').on('click', onCreateCart)
