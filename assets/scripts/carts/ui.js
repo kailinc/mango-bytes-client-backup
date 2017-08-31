@@ -64,6 +64,7 @@ const onGetCartsSuccess = function (data) {
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
+  $('#userProf').empty()
   console.log(modDate)
   const showCartsHTML = showCartsTemplate({ carts: modDate })
   $('#items').append(showCartsHTML)
@@ -107,8 +108,6 @@ const onDestroyCartError = function (error) {
 }
 
 const onUpdateCartSuccess = function (data) {
-  console.log('ui data', data)
-  console.log('cart is updated', data)
 }
 
 const onUpdateCartError = function (error) {
