@@ -28,38 +28,30 @@ const onAddToCart = function (e) {
     }
   }
   const data = {item_id: itemId, quantity: quantity}
-  // console.log('currentCart is', currentCart)
-  // console.log('data is', data)
-  if (!notRepeatingItem(data)) {
-    // console.log('not repeating')
-    // console.log('currentCart is', currentCart)
-    if (currentCart.cart.products.length === 0) {
-      console.log('creating a cart')
-      console.log('currentcart is', currentCart)
-      // currentCart.cart.products.push(data)
-      // console.log(currentCart)
-      cartEvent.onCreateCart(newCart)
-    } else {
-      console.log('updating a cart')
-      console.log('currentcart is', currentCart)
+  if (currentCart.cart.products.length === 0) {
+    cartEvent.onCreateCart(newCart)
+  } else {
+    if (UniqueItem(data)) {
       currentCart.cart.products.push(data)
       cartEvent.onUpdateCart(currentCart, store.cartId)
     }
   }
 }
 
-const notRepeatingItem = function (data) {
-  return currentCart.cart.products.includes(data)
+const UniqueItem = function (data) {
+  const itemId = data.item_id
+  for (let i = 0; i < currentCart.cart.products.length; i++) {
+    if (itemId === currentCart.cart.products[i].item_id) {
+      return false
+    }
+  }
+  return true
 }
 
 const addHandlers = () => {
   $('#allBtn').on('click', viewAll)
   $('#items').on('click', '.viewItemBtn', onViewItem)
   $('#items').on('click', '.addCartBtn', onAddToCart)
-  // $('#logOutBtn').on('click', onLogOut)
-  // $('#changePwdForm').on('submit', onChangePwd)
-  // $('#viewProfileBtn').on('click', onViewProfile)
-  // $('#userInfo').on('submit', '#updateUserForm', onUpdateProfile)
 }
 
 module.exports = {
