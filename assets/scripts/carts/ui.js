@@ -111,8 +111,10 @@ const onUpdateCartError = function (error) {
 }
 
 const onCreateCartSuccess = function (data) {
-  console.log(data)
+  console.log('cart data is', data)
   console.log('your cart is created')
+  store.cartId = data.cart.id
+  console.log('store cart id is', store)
 }
 
 const onCreateCartError = function (error) {

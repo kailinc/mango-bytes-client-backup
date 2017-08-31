@@ -22,48 +22,33 @@ const onViewItem = function () {
 const onAddToCart = function (e) {
   const itemId = $(this).parent().parent().data('id')
   const quantity = $(this).parent().parent().data('quantity')
+  const newCart = {
+    cart: {
+      products: [{item_id: itemId, quantity: quantity}]
+    }
+  }
   const data = {item_id: itemId, quantity: quantity}
-  currentCart.cart.products.push(data)
-  if (currentCart.cart.products.length === 1) {
-    console.log('adding to cart')
-    // console.log(currentCart)
-    cartEvent.onCreateCart(currentCart)
-  } else {
-    console.log('updating a cart')
-    // console.log(store.cartId)
-    cartEvent.onUpdateCart(currentCart, store.cartId)
+  // console.log('currentCart is', currentCart)
+  // console.log('data is', data)
+  if (!notRepeatingItem(data)) {
+    // console.log('not repeating')
+    // console.log('currentCart is', currentCart)
+    if (currentCart.cart.products.length === 0) {
+      console.log('creating a cart')
+      // currentCart.cart.products.push(data)
+      // console.log(currentCart)
+      cartEvent.onCreateCart(newCart)
+    } else {
+      console.log('updating a cart')
+      currentCart.cart.products.push(data)
+      cartEvent.onUpdateCart(currentCart, store.cartId)
+    }
   }
 }
 
-// const onLogOut = function () {
-//   userApi.logOut()
-//     .then(userUi.onLogOutSuccess)
-//     .catch(userUi.onLogOutError)
-// }
-//
-// const onChangePwd = function (e) {
-//   e.preventDefault()
-//   const data = getFormFields(e.target)
-//   userApi.changePwd(data)
-//     .then(userUi.onChangePwdSuccess)
-//     .catch(userUi.onChangePwdError)
-// }
-//
-// const onViewProfile = function (e) {
-//   e.preventDefault()
-//   const data = store.user.id
-//   userApi.viewProfile(data)
-//     .then(userUi.onViewProfileSuccess)
-//     .catch(userUi.onViewProfileError)
-// }
-//
-// const onUpdateProfile = function (e) {
-//   e.preventDefault()
-//   const data = getFormFields(e.target)
-//   userApi.updateUser(data)
-//     .then(userUi.onUpdateProfileSuccess)
-//     .catch(userUi.onUpdateProfileError)
-// }
+const notRepeatingItem = function (data) {
+  return currentCart.cart.products.includes(data)
+}
 
 const addHandlers = () => {
   $('#allBtn').on('click', viewAll)
