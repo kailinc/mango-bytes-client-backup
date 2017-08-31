@@ -40,10 +40,12 @@ const UpdateData = function (data, id, quantity) {
 }
 
 const getItems = function () {
+  frontCart.cart.fullItem = []
   for (let i = 0; i < frontCart.cart.products.length; i++) {
     const itemId = (frontCart.cart.products[i].item_id)
     itemApi.show(itemId)
-      .then((data) => cartInfo.items.push(data))
+      .then((data) => frontCart.cart.fullItem.push(data))
+      // .then((data) => cartInfo.items.push(data))
       .catch((error) => console.log(error))
   }
 }
@@ -56,13 +58,12 @@ const onGetCarts = function () {
 }
 
 const onViewCart = function () {
-  cartInfo.items = []
-  console.log('view cart before init is ', cartInfo)
+  frontCart.cart.fullItem = []
   const data = $(this).parent().data('id')
   cartApi.show(data)
     .then(cartUi.onViewCartSuccess)
     .then(() => getItems())
-    .then(() => console.log('after view cart cartInfo is ', cartInfo))
+    // .then(() => console.log('front cart data is after getItems() ', frontCart.cart))
     .catch(cartUi.onViewCartError)
 }
 
