@@ -1,30 +1,15 @@
 <div class="row">
   <h1>Your Cart</h1>
   <hr>
+    {{#each cart.products as |product|}}
     <div class="col-sm-12 carts">
       <hr>
-      <div class="col-sm-8" data-id={{cart.id}}>
-        {{#each cart.products as |product|}}
-          <div class="col-sm-6">
-            <img src="{{product.img}}" style="height: 150px; margin-bottom: 60px;">
-          </div>
           <div class="col-sm-6" style="height: 200px; margin-bottom: 10px;" data-item-id={{product.item_id}}>
-            <p>{{product.name}}</p>
-            <p>${{product.basePrice}} per</p>
-            <p>DevCred: {{product.devCred}} per</p>
+            <p>Product Id: {{product.item_id}}</p>
             <p>Quantity: {{product.quantity}}</p>
-            <!-- <input type="number" class="itemQuantity" value=""> -->
-            <!-- <button class="btn btn-default deleteItemBtn">Delete Item</button> -->
           </div>
-        {{/each}}
-
       </div>
-      <div class="col-sm-4" data-id={{cart.id}}>
-        <h4>${{cart.totalPrice}}</h4>
-        <h4>DevCred: {{cart.totalDevCred}}</h4>
-        <h4>Paid: {{cart.isPaid}}</h4>
-        <button class="btn btn-default clearCartBtn">Clear Cart</button>
-      </div>
+    {{/each}}
     </div>
     <hr>
 </div>

@@ -74,13 +74,11 @@ const onGetCartsError = function (error) {
 }
 
 const onGetCartSuccess = function (data) {
-  console.log('data of get cart success is ', data)
   data.cart.updatedAt = filterDate(data.cart.updatedAt)
   data = filterCart(data.cart)
   data = deleteId(data)
   // frontCart.cart = filterCart(data.cart)
   frontCart.cart = data
-  console.log('data of front cart from view cart success is ', frontCart)
 }
 
 const onGetCartError = function (error) {
@@ -97,14 +95,9 @@ const onDestroyCartSuccess = function () {
 
 const onViewCartSuccess = function () {
   const data = frontCart
-  let showCartHTML = ''
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
-  if (data.cart.isPaid === false) {
-    showCartHTML = showCartTemplate({ cart: data.cart })
-  } else {
-    showCartHTML = showPaidCartTemplate({ cart: data.cart })
-  }
+  const showCartHTML = showCartTemplate({ cart: data.cart })
   $('#items').empty()
   $('#items').append(showCartHTML)
 }
