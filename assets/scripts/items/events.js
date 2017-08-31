@@ -7,6 +7,7 @@ const store = require('../store')
 const currentCart = require('../currentCart')
 
 const viewAll = function () {
+  $('#firstJumbo').css('display', 'none')
   itemApi.index()
     .then(itemUi.onIndexItemSuccess)
     .catch(itemUi.onIndexItemError)
@@ -29,11 +30,18 @@ const onAddToCart = function (e) {
   }
   const data = {item_id: itemId, quantity: quantity}
   if (currentCart.cart.products.length === 0) {
+    $('#alertSuccess').css('display', 'block').text('Item added to new cart!')
+    $('#alertDanger').css('display', 'none')
     cartEvent.onCreateCart(newCart)
   } else {
     if (UniqueItem(data)) {
+      $('#alertSuccess').css('display', 'block').text('Item added to existing cart!')
+      $('#alertDanger').css('display', 'none')
       currentCart.cart.products.push(data)
       cartEvent.onUpdateCart(currentCart, store.cartId)
+    } else {
+      $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
+      $('#alertSuccess').css('display', 'none')
     }
   }
 }
