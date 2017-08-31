@@ -97,6 +97,7 @@ const onDestroyCartSuccess = function () {
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
+  currentCart.cart.products = []
   console.log('current cart from ondestroy cart is ', currentCart)
 }
 
@@ -118,7 +119,7 @@ const onCreateCartSuccess = function (data) {
   store.cartId = data.cart.id
   currentCart.cart.products = data.cart.products
   cleanCart()
-  console.log('current cart is, after cleaning it', currentCart)
+  console.log('current cart is, after creating and cleaning it', currentCart)
 }
 
 const onCreateCartError = function (error) {
