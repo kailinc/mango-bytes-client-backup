@@ -7,6 +7,8 @@ const showItemTemplate = require('../templates/item.handlebars')
 const onIndexItemSuccess = function (data) {
   $('#main').css('display', 'block')
   $('#items').empty()
+  $('#firstJumbo').css('display', 'none')
+  $('#userProf').empty()
   const showItemsHTML = showItemsTemplate({ items: data.items })
   $('#items').append(showItemsHTML)
 }

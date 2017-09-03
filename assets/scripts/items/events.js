@@ -7,14 +7,13 @@ const store = require('../store')
 const currentCart = require('../currentCart')
 
 const viewAll = function () {
-  $('#firstJumbo').css('display', 'none')
-  $('#userProfile').css('display', 'none')
   itemApi.index()
     .then(itemUi.onIndexItemSuccess)
     .catch(itemUi.onIndexItemError)
 }
 
 const onViewItem = function () {
+  $('#userProfile').css('display', 'none')
   const itemId = $(this).parent().data('id')
   itemApi.show(itemId)
     .then(itemUi.onViewItemSuccess)
