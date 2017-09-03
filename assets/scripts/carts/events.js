@@ -40,12 +40,12 @@ const UpdateData = function (data, id, quantity) {
 }
 
 const getItems = function () {
-  frontCart.cart.fullItem = []
+  let fullItem = []
   for (let i = 0; i < frontCart.cart.products.length; i++) {
     const itemId = (frontCart.cart.products[i].item_id)
     itemApi.show(itemId)
-      .then((data) => frontCart.cart.fullItem.push(data))
-      // .then((data) => cartInfo.items.push(data))
+      .then((data) => fullItem.push(data.item))
+      .then(() => cartUi.onViewCartSuccess(fullItem))
       .catch((error) => console.log(error))
   }
 }
@@ -73,7 +73,6 @@ const onViewCart = function () {
   cartApi.show(data)
     .then(cartUi.onGetCartSuccess)
     .then(() => getItems())
-    .then(cartUi.onViewCartSuccess)
     .catch(cartUi.onGetCartError)
 }
 

@@ -98,11 +98,11 @@ const onDestroyCartSuccess = function () {
   console.log('current cart from ondestroy cart is ', currentCart)
 }
 
-const onViewCartSuccess = function () {
-  const data = frontCart
+const onViewCartSuccess = function (data) {
+  console.log('data of viewcart success is ', data)
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
-  const showCartHTML = showCartTemplate({ cart: data.cart })
+  const showCartHTML = showCartTemplate({ items: data })
   $('#items').empty()
   $('#items').append(showCartHTML)
 }
