@@ -51,11 +51,15 @@ const getItems = function () {
 }
 
 const onGetCarts = function () {
-  $('#firstJumbo').css('display', 'none')
-  cartApi.index()
-    .then((data) => filterCarts(data))
-    .then(cartUi.onGetCartsSuccess)
-    .catch(cartUi.onGetCartsError)
+  if (!store.user) {
+    $('#guestModal').modal('show')
+  } else {
+    $('#firstJumbo').css('display', 'none')
+    cartApi.index()
+      .then((data) => filterCarts(data))
+      .then(cartUi.onGetCartsSuccess)
+      .catch(cartUi.onGetCartsError)
+  }
 }
 
 const onViewCart = function () {
