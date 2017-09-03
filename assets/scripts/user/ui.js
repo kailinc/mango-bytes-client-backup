@@ -53,7 +53,13 @@ const onLogOutSuccess = function () {
   $('.userIn').css('display', 'none')
   $('.userOut').css('display', 'block')
   $('#alertSuccess').css('display', 'block').text('You are signed out!')
+  $('#alertDanger').css('display', 'none')
   $('#signUpError').css('display', 'none')
+  $('#firstJumbo').css('display', 'block')
+  $('#items').empty()
+  $('#userProf').empty()
+  $('#userProfile').css('display', 'none')
+  $('#main').css('display', 'block')
 }
 
 const onLogOutError = function (error) {

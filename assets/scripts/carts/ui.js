@@ -61,6 +61,7 @@ const onGetCartsSuccess = function (data) {
     }
     return 0
   })
+  $('#main').css('display', 'block')
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
@@ -90,6 +91,7 @@ const onDestroyCartSuccess = function () {
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   $('#alertSuccess').css('display', 'block').text('You have cleared the cart.')
+  $('#alertDanger').css('display', 'none')
   $('#signUpError').css('display', 'none')
   $('#items').empty()
   currentCart.cart.products = []
