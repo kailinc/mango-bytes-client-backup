@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://damp-hamlet-57878.herokuapp.com/'
+    production: 'https://damp-hamlet-57878.herokuapp.com'
   }
 }
 
