@@ -21,27 +21,32 @@ const onViewItem = function () {
 }
 
 const onAddToCart = function (e) {
-  const itemId = $(this).parent().parent().data('id')
-  const quantity = $(this).parent().parent().data('quantity')
-  const newCart = {
-    cart: {
-      products: [{item_id: itemId, quantity: quantity}]
-    }
-  }
-  const data = {item_id: itemId, quantity: quantity}
-  if (currentCart.cart.products.length === 0) {
-    $('#alertSuccess').css('display', 'block').text('Item added to new cart!')
-    $('#alertDanger').css('display', 'none')
-    cartEvent.onCreateCart(newCart)
+  if (!store.user) {
+    $('#guestModal').modal('show')
   } else {
-    if (UniqueItem(data)) {
-      $('#alertSuccess').css('display', 'block').text('Item added to existing cart!')
+    console.log('logged in')
+    const itemId = $(this).parent().parent().data('id')
+    const quantity = $(this).parent().parent().data('quantity')
+    const newCart = {
+      cart: {
+        products: [{item_id: itemId, quantity: quantity}]
+      }
+    }
+    const data = {item_id: itemId, quantity: quantity}
+    if (currentCart.cart.products.length === 0) {
+      $('#alertSuccess').css('display', 'block').text('Item added to new cart!')
       $('#alertDanger').css('display', 'none')
-      currentCart.cart.products.push(data)
-      cartEvent.onUpdateCart(currentCart, store.cartId)
+      cartEvent.onCreateCart(newCart)
     } else {
-      $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
-      $('#alertSuccess').css('display', 'none')
+      if (UniqueItem(data)) {
+        $('#alertSuccess').css('display', 'block').text('Item added to existing cart!')
+        $('#alertDanger').css('display', 'none')
+        currentCart.cart.products.push(data)
+        cartEvent.onUpdateCart(currentCart, store.cartId)
+      } else {
+        $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
+        $('#alertSuccess').css('display', 'none')
+      }
     }
   }
 }
