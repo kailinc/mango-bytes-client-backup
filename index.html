@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Mango Bytes</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+
+
+        <!-- TEST NAV BAR -->
+        <nav id="topNav2" class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <div id="header">
+              <p>Free shipping for Linux Programmers</p>
+            </div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+                <img alt="Magno Bytes" src="assets/img/icons/001-web.png" style="width:50px;">
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li><button id='allBtn' type="button" class="btn btn-default">All Items</button></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li class="userOut"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#signUpModal">Sign Up</button></li>
+                    <li class="userOut"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#signInModal">Sign In</button></li>
+                    <li class="userIn"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#changePwdModal">Update Password</button></li>
+                    <li class="userIn"><button id="viewProfileBtn" type="button" class="btn btn-default">View Your Profile</button></li>
+                    <li class="userIn"><buttoitemsn id="logOutBtn" type="button" class="btn btn-default">Log Out</button></li>
+                  </ul>
+                </li>
+                <li>
+                  <button id="cartBtn" type="button" class="btn btn-default">
+                    <img alt="Magno Bytes" src="https://raw.githubusercontent.com/kailinc/mango-bytes-client-backup/master/assets/img/icons/002-commerce.png" style="width:50px;">
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-fluid -->
+        </nav>
+
+
+      <div id='alertSuccess' class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div id='alertDanger' class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+
+      <!-- FOR RENDERING THE MAIN SHOPPING EXPERIENCE -->
+      <div id="main" class="context">
+        <div id='firstJumbo' class="jumbotron">
+          <h1>Hello, World!</h1>
+          <p>If only you can use money to increase your coding skills....</p>
+        </div>
+
+        <div class="container">
+          <div class="row">
+                <!-- for items list -->
+            <div id="items" class="col-sm-8">
+            </div>
+                <!-- for user active, dynamic cart -->
+            <div id="userProf"class="col-sm-4">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOR USER PROFILE -->
+      <div class="context" id="userProfile">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-2 columns">
+            </div>
+            <div class="col-sm-8" id="userInfo">
+            </div>
+
+            <div class="col-sm-2 columns">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- FOR CARTS INFORMATION -->
+      <div class="context" id="cartInfo">
+
+      </div>
+
+
+      <!-- MODAL FOR SIGNING UP-->
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Welcome Developer!</h4>
+            </div>
+            <div class="modal-body">
+                <h3 id="signUpMsg"></h3>
+                <form id="signUpForm" class="form-horizontal">
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">First Name</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="credentials[firstName]" class="form-control" placeholder="First Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="credentials[lastName]" class="form-control" placeholder="Last Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">Alias</label>
+                    <div class="col-sm-7">
+                      <input type="text" name="credentials[coderName]" class="form-control" placeholder="Alias">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-7">
+                      <input id="email" type="email" name="credentials[email]" class="form-control" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-7">
+                      <input id="pwd" type="password" name="credentials[password]" class="form-control" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label">Password Confirmation</label>
+                    <div class="col-sm-7">
+                      <input id="pwdConfirm" type="password" class="form-control" placeholder="Password Confirmation">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                      <button type="submit" class="btn btn-default">Sign Up</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL FOR SIGNING IN -->
+      <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+            </div>
+            <div class="modal-body">
+              <h3 id="signInMsg"></h3>
+              <form id="signInForm" class="form-horizontal">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                  <div class="col-sm-7">
+                    <input type="email" name="credentials[email]" class="form-control" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                  <div class="col-sm-7">
+                    <input id="pwd" type="password" name="credentials[password]" class="form-control" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-10">
+                    <button type="submit" class="btn btn-default">Sign In</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- MODAL FOR CHANGING PASSWORD-->
+      <div class="modal fade" id="changePwdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+            </div>
+            <div class="modal-body">
+              <h3 id="changePwdMsg"></h3>
+              <form id="changePwdForm" class="form-horizontal">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-4 control-label">Current Password</label>
+                  <div class="col-sm-6">
+                    <input type="password" name="passwords[old]" class="form-control" placeholder="Current Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-4 control-label">New Password</label>
+                  <div class="col-sm-6">
+                    <input id="pwd" type="password" name="passwords[new]" class="form-control" placeholder="New Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-10">
+                    <button type="submit" class="btn btn-default">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="guestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-d ialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Notification</h4>
+            </div>
+            <div class="modal-body">
+              <h3>Please Sign Up or Login to Continue</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <footer id="creds">
+        <p >Made by  <a href="https://github.com/kailinc">Kai</a></p>
+      </footer>
+    </body>
+</html>
