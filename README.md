@@ -1,7 +1,11 @@
 ## An embedded screenshot of the app
+
 ## Explanations of the technologies used
+
 ## A couple paragraphs about the general approach you took
+
 ## Installation instructions for any dependencies
+
 ## Link to your user stories – who are your users, what do they want, and why?
 
 1. As a user, I want to add Items to cart so I can buy it.
@@ -17,5 +21,4 @@
 
 https://drive.google.com/drive/folders/0Bxg3M0KoMGmAbDJEbVR0VDliUjQ?usp=sharing
 
-## Link to your pitch deck – documentation of your wireframes, user stories, and proposed architecture
 ## Descriptions of any unsolved problems or major hurdles you had to overcome
