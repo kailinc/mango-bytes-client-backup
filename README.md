@@ -1,10 +1,19 @@
 ## An embedded screenshot of the app
 
+![Screen Shot of App](https://raw.githubusercontent.com/kailinc/airkicks-front-end/basic/docAssets/wireframes/wireframe1.jpg)
+
 ## Explanations of the technologies used
 
+- Handlebars.js
+  - I used Handlebars.js for rendering data from the API onto the client.
+- Amazon Web Services
+  - I used AWS for hosting pictures of different items. Each item has a link to the
+  - img hoster
 ## A couple paragraphs about the general approach you took
 
 ## Installation instructions for any dependencies
+
+1. npm install
 
 ## Link to your user stories – who are your users, what do they want, and why?
 
