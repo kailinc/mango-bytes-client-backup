@@ -1,6 +1,6 @@
 ## An embedded screenshot of the app
 
-![Screen Shot of App](https://raw.githubusercontent.com/kailinc/airkicks-front-end/basic/docAssets/wireframes/wireframe1.jpg)
+![Screen Shot of App](https://raw.githubusercontent.com/kailinc/mango-bytes-client-backup/master/assets/img/mango-bytes-screen-shot.png)
 
 ## Explanations of the technologies used
 
