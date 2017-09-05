@@ -100,7 +100,7 @@ const onDestroyCartSuccess = function () {
 }
 
 const onViewCartSuccess = function (data) {
-  console.log('data of viewcart success is ', data)
+  // console.log('data of viewcart success is ', data)
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   const showCartHTML = showCartTemplate({ items: data })
