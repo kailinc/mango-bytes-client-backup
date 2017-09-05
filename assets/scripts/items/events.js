@@ -25,7 +25,7 @@ const onAddToCart = function (e) {
   if (!store.user) {
     $('#guestModal').modal('show')
   } else {
-    const itemId = $(this).parent().parent().data('id')
+    const itemId = $(this).data('id')
     const quantity = getFormFields(e.target).quantity
     const newCart = {
       cart: {
