@@ -21,34 +21,35 @@ const onViewItem = function () {
 }
 
 const onAddToCart = function (e) {
-  if (!store.user) {
-    $('#guestModal').modal('show')
-  } else {
-    console.log('logged in')
-    const itemId = $(this).parent().parent().data('id')
-    const quantity = $(this).parent().parent().data('quantity')
-    const newCart = {
-      cart: {
-        products: [{item_id: itemId, quantity: quantity}]
-      }
-    }
-    const data = {item_id: itemId, quantity: quantity}
-    if (currentCart.cart.products.length === 0) {
-      $('#alertSuccess').css('display', 'block').text('Item added to new cart!')
-      $('#alertDanger').css('display', 'none')
-      cartEvent.onCreateCart(newCart)
-    } else {
-      if (UniqueItem(data)) {
-        $('#alertSuccess').css('display', 'block').text('Item added to existing cart!')
-        $('#alertDanger').css('display', 'none')
-        currentCart.cart.products.push(data)
-        cartEvent.onUpdateCart(currentCart, store.cartId)
-      } else {
-        $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
-        $('#alertSuccess').css('display', 'none')
-      }
-    }
-  }
+  e.preventDefault()
+  console.log('adding to cart')
+  // if (!store.user) {
+  //   $('#guestModal').modal('show')
+  // } else {
+  //   const itemId = $(this).parent().parent().data('id')
+  //   const quantity = $(this).parent().parent().data('quantity')
+  //   const newCart = {
+  //     cart: {
+  //       products: [{item_id: itemId, quantity: quantity}]
+  //     }
+  //   }
+  //   const data = {item_id: itemId, quantity: quantity}
+  //   if (currentCart.cart.products.length === 0) {
+  //     $('#alertSuccess').css('display', 'block').text('Item added to new cart!')
+  //     $('#alertDanger').css('display', 'none')
+  //     cartEvent.onCreateCart(newCart)
+  //   } else {
+  //     if (UniqueItem(data)) {
+  //       $('#alertSuccess').css('display', 'block').text('Item added to existing cart!')
+  //       $('#alertDanger').css('display', 'none')
+  //       currentCart.cart.products.push(data)
+  //       cartEvent.onUpdateCart(currentCart, store.cartId)
+  //     } else {
+  //       $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
+  //       $('#alertSuccess').css('display', 'none')
+  //     }
+  //   }
+  // }
 }
 
 const UniqueItem = function (data) {
@@ -64,7 +65,7 @@ const UniqueItem = function (data) {
 const addHandlers = () => {
   $('#allBtn').on('click', viewAll)
   $('#items').on('click', '.viewItemBtn', onViewItem)
-  $('#items').on('click', '.addCartBtn', onAddToCart)
+  $('#items').on('submit', '.itemForm', onAddToCart)
 }
 
 module.exports = {
