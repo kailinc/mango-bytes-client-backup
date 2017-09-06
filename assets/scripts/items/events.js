@@ -44,8 +44,7 @@ const onAddToCart = function (e) {
           currentCart.cart.products.push(data)
           cartEvent.onUpdateCart(currentCart, store.cartId)
         } else {
-          $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
-          $('#alertSuccess').css('display', 'none')
+          UpdateItemQuanity(data)
         }
       }
     } else {
@@ -71,6 +70,12 @@ const addHandlers = () => {
   $('#items').on('submit', '.itemForm', onAddToCart)
 }
 
+// function to update quantity of item of current shopping cart
+const UpdateItemQuanity = function (data) {
+  console.log('current cart is from UpdateItemQuanity() ', currentCart)
+  // $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
+  // $('#alertSuccess').css('display', 'none')
+}
 module.exports = {
   addHandlers
 }
