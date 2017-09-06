@@ -25,28 +25,32 @@ const onAddToCart = function (e) {
   if (!store.user) {
     $('#guestModal').modal('show')
   } else {
-    const itemId = $(this).data('id')
     const quantity = getFormFields(e.target).quantity
     const newCart = {
       cart: {
-        products: [{item_id: itemId, quantity: quantity}]
+        products: [{item_id: $(this).data('id'), quantity: quantity}]
       }
     }
-    const data = {item_id: itemId, quantity: quantity}
-    if (currentCart.cart.products.length === 0) {
-      $('#alertSuccess').css('display', 'block').text('Item added to new cart!')
-      $('#alertDanger').css('display', 'none')
-      cartEvent.onCreateCart(newCart)
-    } else {
-      if (UniqueItem(data)) {
-        $('#alertSuccess').css('display', 'block').text('Item added to existing cart!')
+    const data = {item_id: $(this).data('id'), quantity: quantity}
+    if (quantity) {
+      if (currentCart.cart.products.length === 0) {
+        $('#alertSuccess').css('display', 'block').text('Item added to new cart!')
         $('#alertDanger').css('display', 'none')
-        currentCart.cart.products.push(data)
-        cartEvent.onUpdateCart(currentCart, store.cartId)
+        cartEvent.onCreateCart(newCart)
       } else {
-        $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
-        $('#alertSuccess').css('display', 'none')
+        if (UniqueItem(data)) {
+          $('#alertSuccess').css('display', 'block').text('Item added to existing cart!')
+          $('#alertDanger').css('display', 'none')
+          currentCart.cart.products.push(data)
+          cartEvent.onUpdateCart(currentCart, store.cartId)
+        } else {
+          $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
+          $('#alertSuccess').css('display', 'none')
+        }
       }
+    } else {
+      $('#alertDanger').css('display', 'block').text('You need to add a quantity')
+      $('#alertSuccess').css('display', 'none')
     }
   }
 }
