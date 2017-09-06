@@ -54,9 +54,8 @@ const getItems = function () {
 
 // this function updates the quantity for
 const addItemQuantity = function (data) {
-  console.log('this is frontCart from addItemQuantity() ', frontCart.cart.products)
   for (let i = 0; i < frontCart.cart.products.length; i++) {
-    for (let k = 0; k < data.length; i++) {
+    for (let k = 0; k < data.length; k++) {
       if (frontCart.cart.products[i].item_id === data[k].id) {
         data[k].quantity = frontCart.cart.products[i].quantity
       }
