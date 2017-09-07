@@ -6,6 +6,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 const frontCart = require('../frontCart')
 const cartInfo = require('../cartInfo')
+const currentCart = require('../currentCart')
 
 // gets carts that belongs to the user
 const filterCarts = function (data) {
@@ -111,11 +112,9 @@ const onUpdateQuantity = function () {
   }
 }
 const onDeleteItem = function () {
-  const itemId = $(this).parent().data('item-id')
-  const cartId = $(this).parent().parent().data('id')
+  const itemId = $(this).data('id')
   let data = UpdateData(frontCart, itemId, 0)
-  data = JSON.stringify(data)
-  console.log(data)
+  let cartId = $('#userProf').children().data('cart-id')
   cartApi.update(data, cartId)
     .then(cartUi.onUpdateCartSuccess)
     .catch(cartUi.onUpdateCartError)

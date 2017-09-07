@@ -113,6 +113,8 @@ const onDestroyCartError = function (error) {
 }
 
 const onUpdateCartSuccess = function (data) {
+  $('#alertSuccess').css('display', 'block').text('You have removed the item.')
+  $('#alertDanger').css('display', 'none')
 }
 
 const onUpdateCartError = function (error) {

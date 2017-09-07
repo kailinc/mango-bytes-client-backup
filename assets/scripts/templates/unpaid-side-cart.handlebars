@@ -1,5 +1,6 @@
 
-
-<p>Order#: {{data.id}}</p>
-<p>Paid: {{data.status}}</p>
-<button class='clearCartBtn' data-id={{data.id}}>Clear Cart</button>
+<div data-cart-id={{data.id}}>
+  <p>Order#: {{data.id}}</p>
+  <p>Paid: {{data.status}}</p>
+  <button class='clearCartBtn' data-id={{data.id}}>Clear Cart</button>
+</div>
