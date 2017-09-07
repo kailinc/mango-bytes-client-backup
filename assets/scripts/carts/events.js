@@ -95,7 +95,7 @@ const onDeleteCart = function () {
   const data = $(this).data('id')
   cartApi.destroy(data)
     .then(cartUi.onDestroyCartSuccess)
-    .then(onGetCarts)
+    .then(() => onGetCarts())
     .catch(cartUi.onDestroyCartError)
 }
 
@@ -116,7 +116,8 @@ const onDeleteItem = function () {
   let data = UpdateData(frontCart, itemId, 0)
   let cartId = $('#userProf').children().data('cart-id')
   cartApi.update(data, cartId)
-    .then(cartUi.onUpdateCartSuccess)
+    .then(() => cartUi.onUpdateCartSuccess(data))
+    .then(() => getItems())
     .catch(cartUi.onUpdateCartError)
 }
 
