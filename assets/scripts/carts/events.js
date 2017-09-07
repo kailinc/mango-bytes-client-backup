@@ -39,15 +39,29 @@ const UpdateData = function (data, id, quantity) {
   return data
 }
 
+// this function gets the full item information for each item with ajax request
 const getItems = function () {
   let fullItem = []
   for (let i = 0; i < frontCart.cart.products.length; i++) {
     const itemId = (frontCart.cart.products[i].item_id)
     itemApi.show(itemId)
       .then((data) => fullItem.push(data.item))
+      .then(() => addItemQuantity(fullItem))
       .then(() => cartUi.onViewCartSuccess(fullItem))
       .catch((error) => console.log(error))
   }
+}
+
+// this function updates the quantity for
+const addItemQuantity = function (data) {
+  for (let i = 0; i < frontCart.cart.products.length; i++) {
+    for (let k = 0; k < data.length; k++) {
+      if (frontCart.cart.products[i].item_id === data[k].id) {
+        data[k].quantity = frontCart.cart.products[i].quantity
+      }
+    }
+  }
+  console.log('this is data from addItemQuantity() ', data)
 }
 
 const onGetCarts = function () {

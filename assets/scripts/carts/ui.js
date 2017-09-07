@@ -76,6 +76,7 @@ const onGetCartsError = function (error) {
 }
 
 const onGetCartSuccess = function (data) {
+  console.log('this is cart data from onGetCartSUccess() ', data)
   data.cart.updatedAt = filterDate(data.cart.updatedAt)
   data = filterCart(data.cart)
   data = deleteId(data)
@@ -99,7 +100,7 @@ const onDestroyCartSuccess = function () {
 }
 
 const onViewCartSuccess = function (data) {
-  console.log('data of viewcart success is ', data)
+  // console.log('data of viewcart success is ', data)
   $('#userProfile').css('display', 'none')
   $('#firstJumbo').css('display', 'none')
   const showCartHTML = showCartTemplate({ items: data })
