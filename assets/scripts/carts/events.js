@@ -112,13 +112,20 @@ const onUpdateQuantity = function () {
   }
 }
 const onDeleteItem = function () {
-  const itemId = $(this).data('id')
-  let data = UpdateData(frontCart, itemId, 0)
-  let cartId = $('#userProf').children().data('cart-id')
-  cartApi.update(data, cartId)
-    .then(() => cartUi.onUpdateCartSuccess(data))
-    .then(() => getItems())
-    .catch(cartUi.onUpdateCartError)
+  const cartId = $('#userProf').children().data('cart-id')
+  if (frontCart.cart.products.length === 1) {
+    cartApi.destroy(cartId)
+      .then(cartUi.onDestroyCartSuccess)
+      .then(() => onGetCarts())
+      .catch(cartUi.onDestroyCartError)
+  } else {
+    const itemId = $(this).data('id')
+    const data = UpdateData(frontCart, itemId, 0)
+    cartApi.update(data, cartId)
+      .then(() => cartUi.onUpdateCartSuccess(data))
+      .then(() => getItems())
+      .catch(cartUi.onUpdateCartError)
+  }
 }
 
 const onCreateCart = function (data) {
