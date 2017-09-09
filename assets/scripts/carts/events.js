@@ -100,17 +100,13 @@ const onDeleteCart = function () {
 }
 
 const onUpdateQuantity = function () {
-  console.log('hello this is from onUpdateQuantity')
-  // const quantity = $(this).val()
-  // const cartId = $(this).parent().parent().data('id')
-  // if (quantity > 0) {
-  //   const itemId = $(this).parent().data('item-id')
-  //   let data = UpdateData(frontCart, itemId, quantity)
-  //   data = JSON.stringify(data)
-  //   cartApi.update(data, cartId)
-  //     .then(cartUi.onUpdateCartSuccess)
-  //     .catch(cartUi.onUpdateCartError)
-  // }
+  const quantity = $(this).val()
+  const cartId = $('#userProf').children().data('cart-id')
+  const itemId = $(this).parent().data('item-id')
+  let data = UpdateData(frontCart, itemId, quantity)
+  // cartApi.update(data, cartId)
+  //   .then(cartUi.onUpdateCartSuccess)
+  //   .catch(cartUi.onUpdateCartError)
 }
 const onDeleteItem = function () {
   const cartId = $('#userProf').children().data('cart-id')

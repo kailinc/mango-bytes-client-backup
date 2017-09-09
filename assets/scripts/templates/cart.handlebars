@@ -12,7 +12,7 @@
             <h3>${{item.basePrice}}  DevCred: {{item.devCred}} </h3>
             <p>{{item.des}}</p>
             <label for="inputEmail3" class="col-sm-3 control-label">Quantity</label>
-            <div class="col-sm-7">
+            <div class="col-sm-7" data-item-id={{item.id}}>
               <input type="number" name='quantity' min='1' max='10' class="form-control itemQuantity" value="{{item.quantity}}">
             </div>
             <button data-id={{item.id}} class='deleteItemBtn'>Remove Item</button>
