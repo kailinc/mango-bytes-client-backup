@@ -154,6 +154,14 @@ const renderUnpaidSide = function (status, id) {
   $('#userProf').append(showUnpaidSideCartTemplateHTML)
 }
 
+const onUpdateItemQuantitySuccess = function (data) {
+  console.log('this is data from onUpdateItemQuantitySuccess ', data)
+}
+
+const onUpdateItemQuantityError = function (error) {
+  console.log(error)
+}
+
 module.exports = {
   onGetCartsSuccess,
   onGetCartsError,
@@ -167,5 +175,7 @@ module.exports = {
   onCreateCartError,
   onViewCartSuccess,
   renderPaidSide,
-  renderUnpaidSide
+  renderUnpaidSide,
+  onUpdateItemQuantitySuccess,
+  onUpdateItemQuantityError
 }

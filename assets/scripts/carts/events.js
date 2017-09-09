@@ -25,7 +25,7 @@ const UpdateData = function (data, id, quantity) {
   if (quantity > 0) {
     for (let i = 0; i < data.cart.products.length; i++) {
       for (let key in data.cart.products[i]) {
-        if (data.cart.products[i].item === id) {
+        if (data.cart.products[i].item_id === id) {
           data.cart.products[i].quantity = parseInt(quantity)
         }
       }
@@ -104,9 +104,9 @@ const onUpdateQuantity = function () {
   const cartId = $('#userProf').children().data('cart-id')
   const itemId = $(this).parent().data('item-id')
   let data = UpdateData(frontCart, itemId, quantity)
-  // cartApi.update(data, cartId)
-  //   .then(cartUi.onUpdateCartSuccess)
-  //   .catch(cartUi.onUpdateCartError)
+  cartApi.update(data, cartId)
+    .then(cartUi.onUpdateItemQuantitySuccess)
+    .catch(cartUi.onUpdateItemQuantityError)
 }
 const onDeleteItem = function () {
   const cartId = $('#userProf').children().data('cart-id')
