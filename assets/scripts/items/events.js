@@ -34,12 +34,14 @@ const onAddToCart = function (e) {
     const data = {item_id: $(this).data('id'), quantity: quantity}
     if (quantity) {
       if (currentCart.cart.products.length === 0) {
-        $('#alertSuccess').css('display', 'block').text('Item added to new cart!')
+        $('#alertSuccess').css('display', 'block')
+        $('#alertSuccess').text('Item added to new cart!')
         $('#alertDanger').css('display', 'none')
         cartEvent.onCreateCart(newCart)
       } else {
         if (UniqueItem(data)) {
-          $('#alertSuccess').css('display', 'block').text('Item added to existing cart!')
+          $('#alertSuccess').css('display', 'block')
+          $('#alertSuccess').text('Item added to existing cart!')
           $('#alertDanger').css('display', 'none')
           currentCart.cart.products.push(data)
           cartEvent.onUpdateCart(currentCart, store.cartId)
