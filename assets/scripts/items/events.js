@@ -5,6 +5,7 @@ const itemUi = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 const currentCart = require('../currentCart')
+const frontCart = require('../frontCart')
 
 const viewAll = function () {
   itemApi.index()
@@ -68,9 +69,10 @@ const addHandlers = () => {
 
 // function to update quantity of item of current shopping cart
 const UpdateItemQuanity = function (data) {
-  // console.log('current cart is from UpdateItemQuanity() ', currentCart)
-  $('#alertDanger').css('display', 'block').text('You already added this item to cart. You can only buy 1 per time.')
-  $('#alertSuccess').css('display', 'none')
+  let updatedCart = cartEvent.UpdateData(frontCart, data.item_id, data.quantity)
+  frontCart.cart.products = updatedCart.cart.products
+  console.log('this is frontCart from UpdateItemQuantity', frontCart)
+  // cartEvent.updateCart(updatedCart, cartId)
 }
 module.exports = {
   addHandlers

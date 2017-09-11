@@ -66,7 +66,6 @@ const onGetCartsSuccess = function (data) {
   $('#firstJumbo').css('display', 'none')
   $('#items').empty()
   $('#userProf').empty()
-  console.log(modDate)
   const showCartsHTML = showCartsTemplate({ carts: modDate })
   $('#items').append(showCartsHTML)
 }
@@ -76,7 +75,6 @@ const onGetCartsError = function (error) {
 }
 
 const onGetCartSuccess = function (data) {
-  console.log('this is cart data from onGetCartSUccess() ', data)
   data.cart.updatedAt = filterDate(data.cart.updatedAt)
   data = filterCart(data.cart)
   data = deleteId(data)

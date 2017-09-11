@@ -151,5 +151,6 @@ module.exports = {
   addHandlers,
   filterCarts,
   onCreateCart,
-  onUpdateCart
+  onUpdateCart,
+  UpdateData
 }
