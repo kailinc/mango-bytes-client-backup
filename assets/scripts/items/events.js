@@ -37,9 +37,6 @@ const onAddToCart = function (e) {
         cartEvent.onCreateCart(newCart)
       } else {
         if (UniqueItem(data)) {
-          $('#alertSuccess').css('display', 'block')
-          $('#alertSuccess').text('Item added to existing cart!')
-          $('#alertDanger').css('display', 'none')
           currentCart.cart.products.push(data)
           cartEvent.onUpdateCart(currentCart, store.cartId)
         } else {
