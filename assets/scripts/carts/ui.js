@@ -122,11 +122,12 @@ const onUpdateCartError = function (error) {
 }
 
 const onCreateCartSuccess = function (data) {
-  // console.log('cart is created, the data is', data.cart.products)
   store.cartId = data.cart.id
   currentCart.cart.products = data.cart.products
+  $('#alertSuccess').css('display', 'block')
+  $('#alertSuccess').text('Item added to new cart!')
+  $('#alertDanger').css('display', 'none')
   cleanCart()
-  console.log('current cart is, after creating and cleaning it', currentCart)
 }
 
 const onCreateCartError = function (error) {

@@ -26,9 +26,23 @@ const onViewItemSuccess = function (data) {
 const onViewItemError = function (error) {
   console.log(error)
 }
+
+const onNewCartSuccess = function (data) {
+  $('#alertSuccess').css('display', 'block')
+  $('#alertSuccess').text('Item added to new cart!')
+  $('#alertDanger').css('display', 'none')
+  console.log('this is data from onNewCartSuccess ', data)
+}
+
+const onNewCartError = function (error) {
+  console.log(error)
+}
+
 module.exports = {
   onIndexItemSuccess,
   onIndexItemError,
   onViewItemSuccess,
-  onViewItemError
+  onViewItemError,
+  onNewCartSuccess,
+  onNewCartError
 }
